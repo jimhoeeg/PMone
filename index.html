@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="da" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PM One ApS — Bespoke erhvervsindretning &amp; møbler</title>
+  <meta name="description" content="PM One ApS — premium B2B bespoke interiørdesign og møbelproduktion fra Herning. Fra vision til virkelighed på 48 timer." />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons (CDN) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind theme configuration -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            slate950: '#121824',   // deep slate/charcoal background
+            slate900: '#171e2c',
+            slate800: '#1f2838',
+            oak: '#C49A45',         // warm oak / wood accent
+            oaklight: '#D4AF37',    // brighter gold accent
+          },
+          fontFamily: {
+            sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+          },
+          letterSpacing: {
+            ultra: '0.35em',
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+          },
+          animation: {
+            fadeUp: 'fadeUp 0.8s ease forwards',
+          },
+        },
+      },
+    };
+  </script>
+
+  <style>
+    body { background-color: #121824; }
+    /* Thin uppercase eyebrow label */
+    .eyebrow { letter-spacing: 0.35em; }
+    /* Subtle noise / vignette for hero placeholder */
+    .hero-grid {
+      background-image:
+        linear-gradient(rgba(196,154,69,0.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(196,154,69,0.06) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    /* Custom scrollbar (desktop) */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #121824; }
+    ::-webkit-scrollbar-thumb { background: #2b3547; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #C49A45; }
+  </style>
+</head>
+
+<body class="bg-slate950 text-white font-sans antialiased selection:bg-oak selection:text-slate950">
+
+  <!-- ============================================================= -->
+  <!-- HEADER / STICKY NAVBAR                                         -->
+  <!-- ============================================================= -->
+  <header id="header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b border-white/5 backdrop-blur-md bg-slate950/70">
+    <nav class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="flex h-20 items-center justify-between">
+
+        <!-- Logo -->
+        <a href="#hero" class="group flex items-center gap-3">
+          <span class="flex h-10 w-10 items-center justify-center rounded-sm border border-oak/60 text-oak font-bold text-lg tracking-tight transition-colors group-hover:bg-oak group-hover:text-slate950">PM</span>
+          <span class="flex flex-col leading-none">
+            <span class="text-lg font-semibold tracking-wide">PM One</span>
+            <span class="text-[10px] uppercase tracking-ultra text-oak/80">ApS · Herning</span>
+          </span>
+        </a>
+
+        <!-- Desktop nav -->
+        <div class="hidden md:flex items-center gap-10">
+          <a href="#koncepter" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Koncepter</a>
+          <a href="#metoden" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Metoden</a>
+          <a href="#om-os" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Om Os</a>
+          <a href="#kontakt" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Kontakt</a>
+        </div>
+
+        <!-- Desktop CTA -->
+        <a href="#kontakt" class="hidden md:inline-flex items-center gap-2 rounded-sm bg-oak px-5 py-2.5 text-sm font-semibold text-slate950 transition-all hover:bg-oaklight hover:shadow-lg hover:shadow-oak/20">
+          Book et uforpligtende møde
+          <i data-lucide="arrow-right" class="h-4 w-4"></i>
+        </a>
+
+        <!-- Mobile burger -->
+        <button id="menu-btn" aria-label="Åbn menu" class="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-sm border border-white/10 text-white">
+          <i data-lucide="menu" id="menu-icon" class="h-6 w-6"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile menu panel -->
+    <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-slate950/95 backdrop-blur-md">
+      <div class="flex flex-col px-6 py-6 gap-1">
+        <a href="#koncepter" class="mobile-link py-3 text-base font-medium text-white/80 hover:text-oak transition-colors border-b border-white/5">Koncepter</a>
+        <a href="#metoden" class="mobile-link py-3 text-base font-medium text-white/80 hover:text-oak transition-colors border-b border-white/5">Metoden</a>
+        <a href="#om-os" class="mobile-link py-3 text-base font-medium text-white/80 hover:text-oak transition-colors border-b border-white/5">Om Os</a>
+        <a href="#kontakt" class="mobile-link py-3 text-base font-medium text-white/80 hover:text-oak transition-colors border-b border-white/5">Kontakt</a>
+        <a href="#kontakt" class="mobile-link mt-4 inline-flex items-center justify-center gap-2 rounded-sm bg-oak px-5 py-3 text-sm font-semibold text-slate950">
+          Book et uforpligtende møde
+          <i data-lucide="arrow-right" class="h-4 w-4"></i>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============================================================= -->
+  <!-- HERO SECTION                                                  -->
+  <!-- ============================================================= -->
+  <section id="hero" class="relative isolate overflow-hidden pt-20">
+    <!-- Background placeholder (cinematic render goes here) -->
+    <div class="absolute inset-0 -z-10">
+      <div class="absolute inset-0 hero-grid opacity-60"></div>
+      <div class="absolute inset-0 bg-gradient-to-br from-slate950 via-slate900 to-slate950"></div>
+      <!-- warm accent glow -->
+      <div class="absolute -top-32 right-0 h-[40rem] w-[40rem] rounded-full bg-oak/10 blur-[120px]"></div>
+      <div class="absolute bottom-0 left-0 h-[30rem] w-[30rem] rounded-full bg-oak/5 blur-[120px]"></div>
+    </div>
+
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="grid lg:grid-cols-12 gap-12 items-center min-h-[calc(100vh-5rem)] py-20">
+
+        <!-- Copy -->
+        <div class="lg:col-span-7 animate-fadeUp">
+          <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oak">
+            <span class="h-px w-8 bg-oak"></span>
+            Bespoke erhvervsindretning
+          </span>
+
+          <h1 class="mt-8 text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight">
+            Fra vision til<br />
+            virkelighed på
+            <span class="relative inline-block text-oak">
+              48 timer.
+              <span class="absolute -bottom-2 left-0 h-1 w-full bg-oak/30"></span>
+            </span>
+          </h1>
+
+          <p class="mt-8 max-w-xl text-lg leading-relaxed text-white/60">
+            Vi forener midtjysk håndværk med moderne AI-visualisering og leverer skræddersyede
+            interiør- og møbelløsninger til erhverv — hurtigere, skarpere og mere personligt end de store.
+          </p>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-4">
+            <a href="#kontakt" class="inline-flex items-center justify-center gap-2 rounded-sm bg-oak px-7 py-4 text-sm font-semibold text-slate950 transition-all hover:bg-oaklight hover:shadow-xl hover:shadow-oak/25">
+              Book et uforpligtende møde
+              <i data-lucide="calendar-check" class="h-4 w-4"></i>
+            </a>
+            <a href="#koncepter" class="inline-flex items-center justify-center gap-2 rounded-sm border border-white/15 px-7 py-4 text-sm font-semibold text-white transition-all hover:border-oak hover:text-oak">
+              Se vores koncepter
+              <i data-lucide="arrow-down-right" class="h-4 w-4"></i>
+            </a>
+          </div>
+
+          <!-- Trust stats -->
+          <div class="mt-14 grid grid-cols-3 gap-8 max-w-lg border-t border-white/10 pt-8">
+            <div>
+              <p class="text-3xl font-bold text-white">40<span class="text-oak">+</span></p>
+              <p class="mt-1 text-xs uppercase tracking-wider text-white/40">År på gulvet</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-white">48<span class="text-oak">t</span></p>
+              <p class="mt-1 text-xs uppercase tracking-wider text-white/40">Til første render</p>
+            </div>
+            <div>
+              <p class="text-3xl font-bold text-white">1<span class="text-oak">:1</span></p>
+              <p class="mt-1 text-xs uppercase tracking-wider text-white/40">Direkte dialog</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cinematic image placeholder -->
+        <div class="lg:col-span-5 animate-fadeUp" style="animation-delay:.15s">
+          <div class="group relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-white/10 bg-slate800">
+            <div class="absolute inset-0 bg-gradient-to-tr from-slate950 via-slate800 to-slate900"></div>
+            <div class="absolute inset-0 hero-grid opacity-40"></div>
+            <!-- placeholder content -->
+            <div class="relative flex h-full flex-col items-center justify-center gap-4 text-center px-8">
+              <i data-lucide="image" class="h-12 w-12 text-oak/60"></i>
+              <p class="text-sm font-medium text-white/50">Cinematisk render / baggrundsbillede</p>
+              <p class="text-xs text-white/30">Indsæt premium 3D-visualisering her</p>
+            </div>
+            <!-- corner tag -->
+            <div class="absolute bottom-4 left-4 rounded-sm bg-slate950/80 px-3 py-1.5 backdrop-blur-sm">
+              <p class="text-[10px] uppercase tracking-ultra text-oak">AI Visualiseret</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- AI CONCEPT GALLERY                                            -->
+  <!-- ============================================================= -->
+  <section id="koncepter" class="relative py-28 lg:py-36">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-3xl">
+        <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oak">
+          <span class="h-px w-8 bg-oak"></span>
+          Fremtidens Erhvervsrum
+        </span>
+        <h2 class="mt-6 text-4xl lg:text-5xl font-extrabold tracking-tight">AI Koncepter</h2>
+        <p class="mt-5 text-lg text-white/60">
+          Fotorealistiske rum, designet til at sælge en idé før første spånplade er skåret.
+          Udforsk hvordan vi tænker erhvervsindretning på tværs af brancher.
+        </p>
+      </div>
+
+      <!-- Gallery grid -->
+      <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+
+        <!-- Card 1 -->
+        <article class="group relative aspect-[3/4] overflow-hidden rounded-sm border border-white/10 bg-slate800 cursor-pointer">
+          <div class="absolute inset-0 bg-gradient-to-br from-slate800 to-slate950 transition-transform duration-700 group-hover:scale-105"></div>
+          <div class="absolute inset-0 hero-grid opacity-30"></div>
+          <!-- dark overlay on hover -->
+          <div class="absolute inset-0 bg-slate950/0 transition-all duration-500 group-hover:bg-slate950/70"></div>
+          <div class="relative flex h-full flex-col justify-end p-6">
+            <i data-lucide="hotel" class="mb-4 h-7 w-7 text-oak transition-transform duration-500 group-hover:-translate-y-1"></i>
+            <h3 class="text-xl font-bold">The Luxury Hotel Lobby</h3>
+            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/60 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
+              Stemningsfulde ankomstrum, der balancerer storslået og intimt.
+            </p>
+            <span class="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-oak opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              Se koncept <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+            </span>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="group relative aspect-[3/4] overflow-hidden rounded-sm border border-white/10 bg-slate800 cursor-pointer">
+          <div class="absolute inset-0 bg-gradient-to-br from-slate900 to-slate950 transition-transform duration-700 group-hover:scale-105"></div>
+          <div class="absolute inset-0 hero-grid opacity-30"></div>
+          <div class="absolute inset-0 bg-slate950/0 transition-all duration-500 group-hover:bg-slate950/70"></div>
+          <div class="relative flex h-full flex-col justify-end p-6">
+            <i data-lucide="cpu" class="mb-4 h-7 w-7 text-oak transition-transform duration-500 group-hover:-translate-y-1"></i>
+            <h3 class="text-xl font-bold">The Agile Tech Office</h3>
+            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/60 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
+              Fleksible arbejdszoner, der vokser med teamet og kulturen.
+            </p>
+            <span class="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-oak opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              Se koncept <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+            </span>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="group relative aspect-[3/4] overflow-hidden rounded-sm border border-white/10 bg-slate800 cursor-pointer">
+          <div class="absolute inset-0 bg-gradient-to-br from-slate800 to-slate900 transition-transform duration-700 group-hover:scale-105"></div>
+          <div class="absolute inset-0 hero-grid opacity-30"></div>
+          <div class="absolute inset-0 bg-slate950/0 transition-all duration-500 group-hover:bg-slate950/70"></div>
+          <div class="relative flex h-full flex-col justify-end p-6">
+            <i data-lucide="shopping-bag" class="mb-4 h-7 w-7 text-oak transition-transform duration-500 group-hover:-translate-y-1"></i>
+            <h3 class="text-xl font-bold">High-End Retail</h3>
+            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/60 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
+              Butiksrum, der iscenesætter brandet og forlænger besøget.
+            </p>
+            <span class="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-oak opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              Se koncept <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+            </span>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="group relative aspect-[3/4] overflow-hidden rounded-sm border border-white/10 bg-slate800 cursor-pointer">
+          <div class="absolute inset-0 bg-gradient-to-br from-slate900 to-slate800 transition-transform duration-700 group-hover:scale-105"></div>
+          <div class="absolute inset-0 hero-grid opacity-30"></div>
+          <div class="absolute inset-0 bg-slate950/0 transition-all duration-500 group-hover:bg-slate950/70"></div>
+          <div class="relative flex h-full flex-col justify-end p-6">
+            <i data-lucide="utensils" class="mb-4 h-7 w-7 text-oak transition-transform duration-500 group-hover:-translate-y-1"></i>
+            <h3 class="text-xl font-bold">The Signature Restaurant</h3>
+            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/60 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
+              Spiseoplevelser, hvor materialer og lys gør halvdelen af arbejdet.
+            </p>
+            <span class="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-oak opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+              Se koncept <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
+            </span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- PM ONE METODEN — AGILE PROCESS TIMELINE                       -->
+  <!-- ============================================================= -->
+  <section id="metoden" class="relative py-28 lg:py-36 bg-slate900/40 border-y border-white/5">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-3xl">
+        <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oak">
+          <span class="h-px w-8 bg-oak"></span>
+          Den agile proces
+        </span>
+        <h2 class="mt-6 text-4xl lg:text-5xl font-extrabold tracking-tight">PM One Metoden</h2>
+        <p class="mt-5 text-lg text-white/60">
+          Fire skarpe skridt. Ingen bureaukrati, ingen ventetid. Sådan slår vi de store —
+          ved at gøre det enkelt og holde tempoet.
+        </p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="mt-20">
+        <!-- connecting line (desktop) -->
+        <div class="relative grid gap-12 lg:grid-cols-4 lg:gap-8">
+          <div class="hidden lg:block absolute top-7 left-0 right-0 h-px bg-gradient-to-r from-oak/0 via-oak/40 to-oak/0"></div>
+
+          <!-- Step 1 -->
+          <div class="relative group">
+            <div class="flex items-center gap-4 lg:block">
+              <div class="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-oak/40 bg-slate950 text-oak transition-all group-hover:bg-oak group-hover:text-slate950">
+                <i data-lucide="messages-square" class="h-6 w-6"></i>
+              </div>
+              <span class="text-5xl font-extrabold text-white/5 lg:absolute lg:right-0 lg:top-0">01</span>
+            </div>
+            <h3 class="mt-6 text-xl font-bold">Briefing &amp; Dialog</h3>
+            <p class="mt-3 text-sm leading-relaxed text-white/55">
+              Vi lytter. Behov, brand og budget kortlægges i en direkte samtale med beslutningstager.
+            </p>
+          </div>
+
+          <!-- Step 2 -->
+          <div class="relative group">
+            <div class="flex items-center gap-4 lg:block">
+              <div class="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-oak/40 bg-slate950 text-oak transition-all group-hover:bg-oak group-hover:text-slate950">
+                <i data-lucide="sparkles" class="h-6 w-6"></i>
+              </div>
+              <span class="text-5xl font-extrabold text-white/5 lg:absolute lg:right-0 lg:top-0">02</span>
+            </div>
+            <h3 class="mt-6 text-xl font-bold">AI Visualisering</h3>
+            <p class="mt-3 text-sm leading-relaxed text-white/55">
+              Fotorealistiske koncepter på 48 timer. I ser rummet, før vi bygger det.
+            </p>
+          </div>
+
+          <!-- Step 3 -->
+          <div class="relative group">
+            <div class="flex items-center gap-4 lg:block">
+              <div class="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-oak/40 bg-slate950 text-oak transition-all group-hover:bg-oak group-hover:text-slate950">
+                <i data-lucide="hammer" class="h-6 w-6"></i>
+              </div>
+              <span class="text-5xl font-extrabold text-white/5 lg:absolute lg:right-0 lg:top-0">03</span>
+            </div>
+            <h3 class="mt-6 text-xl font-bold">Midtjysk Håndværk</h3>
+            <p class="mt-3 text-sm leading-relaxed text-white/55">
+              Præcisionsproduktion med respekt for materialer, detaljer og deadlines.
+            </p>
+          </div>
+
+          <!-- Step 4 -->
+          <div class="relative group">
+            <div class="flex items-center gap-4 lg:block">
+              <div class="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-oak/40 bg-slate950 text-oak transition-all group-hover:bg-oak group-hover:text-slate950">
+                <i data-lucide="package-check" class="h-6 w-6"></i>
+              </div>
+              <span class="text-5xl font-extrabold text-white/5 lg:absolute lg:right-0 lg:top-0">04</span>
+            </div>
+            <h3 class="mt-6 text-xl font-bold">Levering til tiden</h3>
+            <p class="mt-3 text-sm leading-relaxed text-white/55">
+              Monteret, færdigt og klar til brug — når vi siger det. Done.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- FOUNDER PROFILE — "40 år på gulvet"                           -->
+  <!-- ============================================================= -->
+  <section id="om-os" class="relative py-28 lg:py-36">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+        <!-- Portrait placeholder -->
+        <div class="relative order-1">
+          <div class="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-white/10 bg-slate800">
+            <div class="absolute inset-0 bg-gradient-to-tr from-slate950 via-slate800 to-slate900"></div>
+            <div class="absolute inset-0 hero-grid opacity-30"></div>
+            <div class="relative flex h-full flex-col items-center justify-center gap-4 text-center px-8">
+              <i data-lucide="user-round" class="h-12 w-12 text-oak/60"></i>
+              <p class="text-sm font-medium text-white/50">Professionelt portræt</p>
+              <p class="text-xs text-white/30">Preben Madsen, stifter</p>
+            </div>
+          </div>
+          <!-- floating badge -->
+          <div class="absolute -bottom-6 -right-4 sm:right-8 rounded-sm border border-oak/40 bg-slate950 px-6 py-5 shadow-2xl shadow-black/40">
+            <p class="text-4xl font-extrabold text-oak leading-none">40 år</p>
+            <p class="mt-1 text-xs uppercase tracking-wider text-white/50">på gulvet</p>
+          </div>
+        </div>
+
+        <!-- Editorial story -->
+        <div class="order-2">
+          <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oak">
+            <span class="h-px w-8 bg-oak"></span>
+            Manden bag
+          </span>
+          <h2 class="mt-6 text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+            Preben Madsen
+          </h2>
+          <p class="mt-6 text-lg leading-relaxed text-white/70">
+            I fire årtier har Preben stået på værkstedsgulvet — fra den første høvl til den seneste
+            CNC-fræser. Han kender materialerne, leverandørerne og faldgruberne på rygraden.
+          </p>
+          <p class="mt-5 text-base leading-relaxed text-white/55">
+            Hos PM One taler du ikke med en projektkoordinator, der skal spørge tre led op.
+            Du taler med ejeren — manden, der både tegner stregen og står inde for den.
+            Det betyder hurtige beslutninger, personligt ansvar og et håndtryk, der holder.
+          </p>
+
+          <!-- value bullets -->
+          <ul class="mt-10 space-y-4">
+            <li class="flex items-start gap-4">
+              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-oak/15 text-oak">
+                <i data-lucide="check" class="h-4 w-4"></i>
+              </span>
+              <span class="text-white/70"><span class="font-semibold text-white">Ingen bureaukrati.</span> Beslutningskraften sidder hos den, du taler med.</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-oak/15 text-oak">
+                <i data-lucide="check" class="h-4 w-4"></i>
+              </span>
+              <span class="text-white/70"><span class="font-semibold text-white">Personligt engagement.</span> Dit projekt er hans navn på spil.</span>
+            </li>
+            <li class="flex items-start gap-4">
+              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-oak/15 text-oak">
+                <i data-lucide="check" class="h-4 w-4"></i>
+              </span>
+              <span class="text-white/70"><span class="font-semibold text-white">40 års erfaring.</span> Fra idé til montering — intet overlades til tilfældigheder.</span>
+            </li>
+          </ul>
+
+          <a href="#kontakt" class="mt-10 inline-flex items-center gap-2 rounded-sm border border-white/15 px-7 py-4 text-sm font-semibold text-white transition-all hover:border-oak hover:text-oak">
+            Tal direkte med Preben
+            <i data-lucide="phone" class="h-4 w-4"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- CONTACT / CTA + FOOTER                                        -->
+  <!-- ============================================================= -->
+  <section id="kontakt" class="relative pt-28 lg:pt-36 bg-slate900/40 border-t border-white/5">
+    <div class="mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16">
+
+        <!-- CTA copy -->
+        <div>
+          <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oak">
+            <span class="h-px w-8 bg-oak"></span>
+            Lad os bygge noget
+          </span>
+          <h2 class="mt-6 text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+            Book et uforpligtende møde
+          </h2>
+          <p class="mt-6 text-lg leading-relaxed text-white/60 max-w-md">
+            Fortæl os om rummet, brandet eller idéen. Inden for 48 timer vender vi tilbage
+            med de første tanker — helt uden binding.
+          </p>
+
+          <!-- contact details -->
+          <div class="mt-12 space-y-6">
+            <div class="flex items-center gap-4">
+              <span class="flex h-11 w-11 items-center justify-center rounded-sm border border-white/10 text-oak">
+                <i data-lucide="map-pin" class="h-5 w-5"></i>
+              </span>
+              <div>
+                <p class="text-sm font-semibold text-white">PM One ApS</p>
+                <p class="text-sm text-white/50">Herning, Danmark</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="flex h-11 w-11 items-center justify-center rounded-sm border border-white/10 text-oak">
+                <i data-lucide="mail" class="h-5 w-5"></i>
+              </span>
+              <div>
+                <p class="text-sm font-semibold text-white">kontakt@pmone.dk</p>
+                <p class="text-sm text-white/50">Vi svarer hurtigt</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <span class="flex h-11 w-11 items-center justify-center rounded-sm border border-white/10 text-oak">
+                <i data-lucide="phone" class="h-5 w-5"></i>
+              </span>
+              <div>
+                <p class="text-sm font-semibold text-white">+45 00 00 00 00</p>
+                <p class="text-sm text-white/50">Direkte til Preben</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact form -->
+        <div class="rounded-sm border border-white/10 bg-slate950/60 p-8 lg:p-10">
+          <form id="contact-form" class="space-y-6">
+            <div class="grid sm:grid-cols-2 gap-6">
+              <div>
+                <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">Navn</label>
+                <input id="name" name="name" type="text" required
+                  class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 transition-colors focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak"
+                  placeholder="Dit navn" />
+              </div>
+              <div>
+                <label for="company" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">Virksomhed</label>
+                <input id="company" name="company" type="text"
+                  class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 transition-colors focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak"
+                  placeholder="Virksomhedsnavn" />
+              </div>
+            </div>
+            <div>
+              <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">E-mail</label>
+              <input id="email" name="email" type="email" required
+                class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 transition-colors focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak"
+                placeholder="dig@virksomhed.dk" />
+            </div>
+            <div>
+              <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">Fortæl om projektet</label>
+              <textarea id="message" name="message" rows="4"
+                class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 transition-colors focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak resize-none"
+                placeholder="Rum, brand, idé, deadline …"></textarea>
+            </div>
+            <button type="submit"
+              class="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-oak px-7 py-4 text-sm font-semibold text-slate950 transition-all hover:bg-oaklight hover:shadow-xl hover:shadow-oak/25">
+              Send forespørgsel
+              <i data-lucide="send" class="h-4 w-4"></i>
+            </button>
+            <!-- success message (toggled by JS) -->
+            <p id="form-success" class="hidden text-center text-sm text-oak">
+              Tak! Vi vender tilbage inden for 48 timer.
+            </p>
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Footer bar -->
+      <footer class="mt-24 border-t border-white/5 py-10">
+        <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+          <!-- logo -->
+          <div class="flex items-center gap-3">
+            <span class="flex h-9 w-9 items-center justify-center rounded-sm border border-oak/60 text-oak font-bold text-sm">PM</span>
+            <span class="text-sm text-white/50">© 2026 PM One ApS · Herning · CVR 00 00 00 00</span>
+          </div>
+          <!-- footer links -->
+          <div class="flex items-center gap-8 text-sm text-white/50">
+            <a href="#koncepter" class="hover:text-oak transition-colors">Koncepter</a>
+            <a href="#metoden" class="hover:text-oak transition-colors">Metoden</a>
+            <a href="#om-os" class="hover:text-oak transition-colors">Om Os</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
+  <!-- VANILLA JS — interactivity                                    -->
+  <!-- ============================================================= -->
+  <script>
+    // Render all Lucide icons
+    lucide.createIcons();
+
+    // --- Mobile menu toggle ---
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    let menuOpen = false;
+
+    menuBtn.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('hidden', !menuOpen);
+      menuIcon.setAttribute('data-lucide', menuOpen ? 'x' : 'menu');
+      lucide.createIcons(); // re-render the swapped icon
+    });
+
+    // Close mobile menu when a link is clicked
+    document.querySelectorAll('.mobile-link').forEach((link) => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileMenu.classList.add('hidden');
+        menuIcon.setAttribute('data-lucide', 'menu');
+        lucide.createIcons();
+      });
+    });
+
+    // --- Header background shift on scroll ---
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 20) {
+        header.classList.add('bg-slate950/90', 'shadow-lg', 'shadow-black/20');
+      } else {
+        header.classList.remove('bg-slate950/90', 'shadow-lg', 'shadow-black/20');
+      }
+    });
+
+    // --- Contact form (demo only, no backend) ---
+    const form = document.getElementById('contact-form');
+    const success = document.getElementById('form-success');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      success.classList.remove('hidden');
+      form.reset();
+      setTimeout(() => success.classList.add('hidden'), 5000);
+    });
+  </script>
+</body>
+</html>
