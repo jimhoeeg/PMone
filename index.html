@@ -13,7 +13,7 @@
   <!-- Google Fonts: Inter -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 
   <!-- Tailwind theme configuration -->
   <script>
@@ -21,11 +21,10 @@
       theme: {
         extend: {
           colors: {
-            slate950: '#121824',   // deep slate/charcoal background
-            slate900: '#171e2c',
-            slate800: '#1f2838',
-            oak: '#C49A45',         // warm oak / wood accent
-            oaklight: '#D4AF37',    // brighter gold accent
+            canvas: '#FAF8F4',   // warm off-white background
+            ink: '#16202E',      // charcoal text / near-black
+            oak: '#C49A45',      // warm oak / wood accent (fills)
+            oakdeep: '#9A7526',  // deeper oak for text on light
           },
           fontFamily: {
             sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif'],
@@ -48,73 +47,82 @@
   </script>
 
   <style>
-    body { background-color: #121824; }
+    body { background-color: #FAF8F4; }
     /* Thin uppercase eyebrow label */
     .eyebrow { letter-spacing: 0.35em; }
-    /* Subtle noise / vignette for hero placeholder */
-    .hero-grid {
+    /* Warm photography placeholder gradient (evokes oak / wood imagery) */
+    .warm-img {
       background-image:
-        linear-gradient(rgba(196,154,69,0.06) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(196,154,69,0.06) 1px, transparent 1px);
-      background-size: 48px 48px;
+        radial-gradient(120% 120% at 20% 10%, #F2E9D9 0%, #E7D8BE 45%, #D8C4A0 100%);
     }
-    /* Custom scrollbar (desktop) */
+    .warm-img-dark {
+      background-image:
+        radial-gradient(120% 120% at 30% 20%, #E9DCC4 0%, #CDB489 55%, #A98C56 100%);
+    }
+    /* faint structural grid for hero */
+    .soft-grid {
+      background-image:
+        linear-gradient(rgba(22,32,46,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22,32,46,0.04) 1px, transparent 1px);
+      background-size: 52px 52px;
+    }
+    /* Custom scrollbar */
     ::-webkit-scrollbar { width: 10px; }
-    ::-webkit-scrollbar-track { background: #121824; }
-    ::-webkit-scrollbar-thumb { background: #2b3547; border-radius: 9999px; }
+    ::-webkit-scrollbar-track { background: #F0EBE2; }
+    ::-webkit-scrollbar-thumb { background: #D8CFC0; border-radius: 9999px; }
     ::-webkit-scrollbar-thumb:hover { background: #C49A45; }
   </style>
 </head>
 
-<body class="bg-slate950 text-white font-sans antialiased selection:bg-oak selection:text-slate950">
+<body class="bg-canvas text-ink font-sans antialiased selection:bg-oak selection:text-white">
 
   <!-- ============================================================= -->
   <!-- HEADER / STICKY NAVBAR                                         -->
   <!-- ============================================================= -->
-  <header id="header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b border-white/5 backdrop-blur-md bg-slate950/70">
+  <header id="header" class="fixed top-0 inset-x-0 z-50 transition-all duration-300 border-b border-stone-200/70 bg-canvas/80 backdrop-blur-md">
     <nav class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="flex h-20 items-center justify-between">
 
         <!-- Logo -->
         <a href="#hero" class="group flex items-center gap-3">
-          <span class="flex h-10 w-10 items-center justify-center rounded-sm border border-oak/60 text-oak font-bold text-lg tracking-tight transition-colors group-hover:bg-oak group-hover:text-slate950">PM</span>
+          <span class="flex h-10 w-10 items-center justify-center rounded-sm border border-oak text-oakdeep font-bold text-lg tracking-tight transition-colors group-hover:bg-oak group-hover:text-white">PM</span>
           <span class="flex flex-col leading-none">
-            <span class="text-lg font-semibold tracking-wide">PM One</span>
-            <span class="text-[10px] uppercase tracking-ultra text-oak/80">ApS · Herning</span>
+            <span class="text-lg font-semibold tracking-wide text-ink">PM One</span>
+            <span class="text-[10px] uppercase tracking-ultra text-oakdeep">ApS · Herning</span>
           </span>
         </a>
 
         <!-- Desktop nav -->
-        <div class="hidden md:flex items-center gap-10">
-          <a href="#koncepter" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Koncepter</a>
-          <a href="#metoden" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Metoden</a>
-          <a href="#konfigurator" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Konfigurator</a>
-          <a href="#om-os" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Om Os</a>
-          <a href="#kontakt" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Kontakt</a>
+        <div class="hidden md:flex items-center gap-9">
+          <a href="#koncepter" class="text-xs font-semibold uppercase tracking-widest text-stone-500 hover:text-ink transition-colors">Koncepter</a>
+          <a href="#metoden" class="text-xs font-semibold uppercase tracking-widest text-stone-500 hover:text-ink transition-colors">Metoden</a>
+          <a href="#konfigurator" class="text-xs font-semibold uppercase tracking-widest text-stone-500 hover:text-ink transition-colors">Konfigurator</a>
+          <a href="#om-os" class="text-xs font-semibold uppercase tracking-widest text-stone-500 hover:text-ink transition-colors">Om Os</a>
+          <a href="#kontakt" class="text-xs font-semibold uppercase tracking-widest text-stone-500 hover:text-ink transition-colors">Kontakt</a>
         </div>
 
         <!-- Desktop CTA -->
-        <a href="#kontakt" class="hidden md:inline-flex items-center gap-2 rounded-sm bg-oak px-5 py-2.5 text-sm font-semibold text-slate950 transition-all hover:bg-oaklight hover:shadow-lg hover:shadow-oak/20">
+        <a href="#kontakt" class="hidden md:inline-flex items-center gap-2 rounded-sm bg-ink px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-oakdeep">
           Book et uforpligtende møde
           <i data-lucide="arrow-right" class="h-4 w-4"></i>
         </a>
 
         <!-- Mobile burger -->
-        <button id="menu-btn" aria-label="Åbn menu" class="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-sm border border-white/10 text-white">
+        <button id="menu-btn" aria-label="Åbn menu" class="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-sm border border-stone-300 text-ink">
           <i data-lucide="menu" id="menu-icon" class="h-6 w-6"></i>
         </button>
       </div>
     </nav>
 
     <!-- Mobile menu panel -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-white/5 bg-slate950/95 backdrop-blur-md">
+    <div id="mobile-menu" class="hidden md:hidden border-t border-stone-200 bg-canvas/95 backdrop-blur-md">
       <div class="flex flex-col px-6 py-6 gap-1">
-        <a href="#koncepter" class="mobile-link py-3 text-base font-medium text-white/80 hover:text-oak transition-colors border-b border-white/5">Koncepter</a>
-        <a href="#metoden" class="mobile-link py-3 text-base font-medium text-white/80 hover:text-oak transition-colors border-b border-white/5">Metoden</a>
-        <a href="#konfigurator" class="mobile-link py-3 text-base font-medium text-white/80 hover:text-oak transition-colors border-b border-white/5">Konfigurator</a>
-        <a href="#om-os" class="mobile-link py-3 text-base font-medium text-white/80 hover:text-oak transition-colors border-b border-white/5">Om Os</a>
-        <a href="#kontakt" class="mobile-link py-3 text-base font-medium text-white/80 hover:text-oak transition-colors border-b border-white/5">Kontakt</a>
-        <a href="#kontakt" class="mobile-link mt-4 inline-flex items-center justify-center gap-2 rounded-sm bg-oak px-5 py-3 text-sm font-semibold text-slate950">
+        <a href="#koncepter" class="mobile-link py-3 text-sm font-semibold uppercase tracking-widest text-stone-600 hover:text-oakdeep transition-colors border-b border-stone-200">Koncepter</a>
+        <a href="#metoden" class="mobile-link py-3 text-sm font-semibold uppercase tracking-widest text-stone-600 hover:text-oakdeep transition-colors border-b border-stone-200">Metoden</a>
+        <a href="#konfigurator" class="mobile-link py-3 text-sm font-semibold uppercase tracking-widest text-stone-600 hover:text-oakdeep transition-colors border-b border-stone-200">Konfigurator</a>
+        <a href="#om-os" class="mobile-link py-3 text-sm font-semibold uppercase tracking-widest text-stone-600 hover:text-oakdeep transition-colors border-b border-stone-200">Om Os</a>
+        <a href="#kontakt" class="mobile-link py-3 text-sm font-semibold uppercase tracking-widest text-stone-600 hover:text-oakdeep transition-colors border-b border-stone-200">Kontakt</a>
+        <a href="#kontakt" class="mobile-link mt-4 inline-flex items-center justify-center gap-2 rounded-sm bg-ink px-5 py-3 text-sm font-semibold text-white">
           Book et uforpligtende møde
           <i data-lucide="arrow-right" class="h-4 w-4"></i>
         </a>
@@ -125,82 +133,74 @@
   <!-- ============================================================= -->
   <!-- HERO SECTION                                                  -->
   <!-- ============================================================= -->
-  <section id="hero" class="relative isolate overflow-hidden pt-20">
-    <!-- Background placeholder (cinematic render goes here) -->
+  <section id="hero" class="relative isolate overflow-hidden bg-canvas pt-20">
+    <!-- soft warm background treatment -->
     <div class="absolute inset-0 -z-10">
-      <div class="absolute inset-0 hero-grid opacity-60"></div>
-      <div class="absolute inset-0 bg-gradient-to-br from-slate950 via-slate900 to-slate950"></div>
-      <!-- warm accent glow -->
-      <div class="absolute -top-32 right-0 h-[40rem] w-[40rem] rounded-full bg-oak/10 blur-[120px]"></div>
-      <div class="absolute bottom-0 left-0 h-[30rem] w-[30rem] rounded-full bg-oak/5 blur-[120px]"></div>
+      <div class="absolute inset-0 soft-grid opacity-70"></div>
+      <div class="absolute -top-24 right-0 h-[36rem] w-[36rem] rounded-full bg-oak/10 blur-[120px]"></div>
     </div>
 
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="grid lg:grid-cols-12 gap-12 items-center min-h-[calc(100vh-5rem)] py-20">
+      <div class="grid lg:grid-cols-12 gap-12 lg:gap-16 items-center min-h-[calc(100vh-5rem)] py-20">
 
         <!-- Copy -->
-        <div class="lg:col-span-7 animate-fadeUp">
-          <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oak">
+        <div class="lg:col-span-6 animate-fadeUp">
+          <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oakdeep">
             <span class="h-px w-8 bg-oak"></span>
             Bespoke erhvervsindretning
           </span>
 
-          <h1 class="mt-8 text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-[1.02] tracking-tight">
-            Fra vision til<br />
-            virkelighed på
-            <span class="relative inline-block text-oak">
-              48 timer.
-              <span class="absolute -bottom-2 left-0 h-1 w-full bg-oak/30"></span>
-            </span>
+          <h1 class="mt-8 text-5xl sm:text-6xl lg:text-7xl leading-[1.03] tracking-tight text-ink">
+            <span class="font-light">Fra vision til</span><br />
+            <span class="font-light">virkelighed på</span><br />
+            <span class="font-extrabold text-oakdeep">48 timer.</span>
           </h1>
 
-          <p class="mt-8 max-w-xl text-lg leading-relaxed text-white/60">
+          <p class="mt-8 max-w-xl text-lg leading-relaxed text-stone-600">
             Vi forener midtjysk håndværk med moderne AI-visualisering og leverer skræddersyede
             interiør- og møbelløsninger til erhverv — hurtigere, skarpere og mere personligt end de store.
           </p>
 
           <div class="mt-10 flex flex-col sm:flex-row gap-4">
-            <a href="#kontakt" class="inline-flex items-center justify-center gap-2 rounded-sm bg-oak px-7 py-4 text-sm font-semibold text-slate950 transition-all hover:bg-oaklight hover:shadow-xl hover:shadow-oak/25">
-              Book et uforpligtende møde
-              <i data-lucide="calendar-check" class="h-4 w-4"></i>
+            <a href="#konfigurator" class="inline-flex items-center justify-center gap-2 rounded-sm bg-ink px-7 py-4 text-sm font-semibold text-white transition-all hover:bg-oakdeep">
+              Få et prisoverslag
+              <i data-lucide="calculator" class="h-4 w-4"></i>
             </a>
-            <a href="#koncepter" class="inline-flex items-center justify-center gap-2 rounded-sm border border-white/15 px-7 py-4 text-sm font-semibold text-white transition-all hover:border-oak hover:text-oak">
+            <a href="#koncepter" class="inline-flex items-center justify-center gap-2 rounded-sm border border-stone-300 px-7 py-4 text-sm font-semibold text-ink transition-all hover:border-oak hover:text-oakdeep">
               Se vores koncepter
               <i data-lucide="arrow-down-right" class="h-4 w-4"></i>
             </a>
           </div>
 
           <!-- Trust stats -->
-          <div class="mt-14 grid grid-cols-3 gap-8 max-w-lg border-t border-white/10 pt-8">
+          <div class="mt-14 grid grid-cols-3 gap-8 max-w-lg border-t border-stone-200 pt-8">
             <div>
-              <p class="text-3xl font-bold text-white">40<span class="text-oak">+</span></p>
-              <p class="mt-1 text-xs uppercase tracking-wider text-white/40">År på gulvet</p>
+              <p class="text-3xl font-bold text-ink">40<span class="text-oak">+</span></p>
+              <p class="mt-1 text-xs uppercase tracking-wider text-stone-400">År på gulvet</p>
             </div>
             <div>
-              <p class="text-3xl font-bold text-white">48<span class="text-oak">t</span></p>
-              <p class="mt-1 text-xs uppercase tracking-wider text-white/40">Til første render</p>
+              <p class="text-3xl font-bold text-ink">48<span class="text-oak">t</span></p>
+              <p class="mt-1 text-xs uppercase tracking-wider text-stone-400">Til første render</p>
             </div>
             <div>
-              <p class="text-3xl font-bold text-white">1<span class="text-oak">:1</span></p>
-              <p class="mt-1 text-xs uppercase tracking-wider text-white/40">Direkte dialog</p>
+              <p class="text-3xl font-bold text-ink">1<span class="text-oak">:1</span></p>
+              <p class="mt-1 text-xs uppercase tracking-wider text-stone-400">Direkte dialog</p>
             </div>
           </div>
         </div>
 
         <!-- Cinematic image placeholder -->
-        <div class="lg:col-span-5 animate-fadeUp" style="animation-delay:.15s">
-          <div class="group relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-white/10 bg-slate800">
-            <div class="absolute inset-0 bg-gradient-to-tr from-slate950 via-slate800 to-slate900"></div>
-            <div class="absolute inset-0 hero-grid opacity-40"></div>
+        <div class="lg:col-span-6 animate-fadeUp" style="animation-delay:.15s">
+          <div class="group relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-stone-200 warm-img shadow-xl shadow-stone-300/40">
             <!-- placeholder content -->
             <div class="relative flex h-full flex-col items-center justify-center gap-4 text-center px-8">
-              <i data-lucide="image" class="h-12 w-12 text-oak/60"></i>
-              <p class="text-sm font-medium text-white/50">Cinematisk render / baggrundsbillede</p>
-              <p class="text-xs text-white/30">Indsæt premium 3D-visualisering her</p>
+              <i data-lucide="image" class="h-12 w-12 text-oakdeep/70"></i>
+              <p class="text-sm font-medium text-ink/60">Cinematisk render / baggrundsbillede</p>
+              <p class="text-xs text-ink/40">Indsæt premium 3D-visualisering her</p>
             </div>
             <!-- corner tag -->
-            <div class="absolute bottom-4 left-4 rounded-sm bg-slate950/80 px-3 py-1.5 backdrop-blur-sm">
-              <p class="text-[10px] uppercase tracking-ultra text-oak">AI Visualiseret</p>
+            <div class="absolute bottom-4 left-4 rounded-sm bg-white/85 px-3 py-1.5 backdrop-blur-sm">
+              <p class="text-[10px] uppercase tracking-ultra text-oakdeep">AI Visualiseret</p>
             </div>
           </div>
         </div>
@@ -212,17 +212,17 @@
   <!-- ============================================================= -->
   <!-- AI CONCEPT GALLERY                                            -->
   <!-- ============================================================= -->
-  <section id="koncepter" class="relative py-28 lg:py-36">
+  <section id="koncepter" class="relative bg-white py-28 lg:py-36 border-y border-stone-200">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
 
       <!-- Section header -->
       <div class="max-w-3xl">
-        <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oak">
+        <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oakdeep">
           <span class="h-px w-8 bg-oak"></span>
           Fremtidens Erhvervsrum
         </span>
-        <h2 class="mt-6 text-4xl lg:text-5xl font-extrabold tracking-tight">AI Koncepter</h2>
-        <p class="mt-5 text-lg text-white/60">
+        <h2 class="mt-6 text-4xl lg:text-5xl tracking-tight text-ink"><span class="font-light">AI</span> <span class="font-extrabold">Koncepter</span></h2>
+        <p class="mt-5 text-lg text-stone-600">
           Fotorealistiske rum, designet til at sælge en idé før første spånplade er skåret.
           Udforsk hvordan vi tænker erhvervsindretning på tværs af brancher.
         </p>
@@ -232,69 +232,65 @@
       <div class="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
 
         <!-- Card 1 -->
-        <article class="group relative aspect-[3/4] overflow-hidden rounded-sm border border-white/10 bg-slate800 cursor-pointer">
-          <div class="absolute inset-0 bg-gradient-to-br from-slate800 to-slate950 transition-transform duration-700 group-hover:scale-105"></div>
-          <div class="absolute inset-0 hero-grid opacity-30"></div>
-          <!-- dark overlay on hover -->
-          <div class="absolute inset-0 bg-slate950/0 transition-all duration-500 group-hover:bg-slate950/70"></div>
-          <div class="relative flex h-full flex-col justify-end p-6">
-            <i data-lucide="hotel" class="mb-4 h-7 w-7 text-oak transition-transform duration-500 group-hover:-translate-y-1"></i>
+        <article class="group relative aspect-[3/4] overflow-hidden rounded-sm border border-stone-200 warm-img-dark cursor-pointer">
+          <div class="absolute inset-0 warm-img-dark transition-transform duration-700 group-hover:scale-105"></div>
+          <!-- legibility + hover scrim -->
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent transition-all duration-500 group-hover:from-ink/85"></div>
+          <div class="relative flex h-full flex-col justify-end p-6 text-white">
+            <i data-lucide="hotel" class="mb-4 h-7 w-7 transition-transform duration-500 group-hover:-translate-y-1"></i>
             <h3 class="text-xl font-bold">The Luxury Hotel Lobby</h3>
-            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/60 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
+            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/80 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
               Stemningsfulde ankomstrum, der balancerer storslået og intimt.
             </p>
-            <span class="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-oak opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+            <span class="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider opacity-0 transition-opacity duration-500 group-hover:opacity-100">
               Se koncept <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
             </span>
           </div>
         </article>
 
         <!-- Card 2 -->
-        <article class="group relative aspect-[3/4] overflow-hidden rounded-sm border border-white/10 bg-slate800 cursor-pointer">
-          <div class="absolute inset-0 bg-gradient-to-br from-slate900 to-slate950 transition-transform duration-700 group-hover:scale-105"></div>
-          <div class="absolute inset-0 hero-grid opacity-30"></div>
-          <div class="absolute inset-0 bg-slate950/0 transition-all duration-500 group-hover:bg-slate950/70"></div>
-          <div class="relative flex h-full flex-col justify-end p-6">
-            <i data-lucide="cpu" class="mb-4 h-7 w-7 text-oak transition-transform duration-500 group-hover:-translate-y-1"></i>
+        <article class="group relative aspect-[3/4] overflow-hidden rounded-sm border border-stone-200 warm-img cursor-pointer">
+          <div class="absolute inset-0 warm-img transition-transform duration-700 group-hover:scale-105"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent transition-all duration-500 group-hover:from-ink/85"></div>
+          <div class="relative flex h-full flex-col justify-end p-6 text-white">
+            <i data-lucide="cpu" class="mb-4 h-7 w-7 transition-transform duration-500 group-hover:-translate-y-1"></i>
             <h3 class="text-xl font-bold">The Agile Tech Office</h3>
-            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/60 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
+            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/80 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
               Fleksible arbejdszoner, der vokser med teamet og kulturen.
             </p>
-            <span class="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-oak opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+            <span class="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider opacity-0 transition-opacity duration-500 group-hover:opacity-100">
               Se koncept <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
             </span>
           </div>
         </article>
 
         <!-- Card 3 -->
-        <article class="group relative aspect-[3/4] overflow-hidden rounded-sm border border-white/10 bg-slate800 cursor-pointer">
-          <div class="absolute inset-0 bg-gradient-to-br from-slate800 to-slate900 transition-transform duration-700 group-hover:scale-105"></div>
-          <div class="absolute inset-0 hero-grid opacity-30"></div>
-          <div class="absolute inset-0 bg-slate950/0 transition-all duration-500 group-hover:bg-slate950/70"></div>
-          <div class="relative flex h-full flex-col justify-end p-6">
-            <i data-lucide="shopping-bag" class="mb-4 h-7 w-7 text-oak transition-transform duration-500 group-hover:-translate-y-1"></i>
+        <article class="group relative aspect-[3/4] overflow-hidden rounded-sm border border-stone-200 warm-img-dark cursor-pointer">
+          <div class="absolute inset-0 warm-img-dark transition-transform duration-700 group-hover:scale-105"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent transition-all duration-500 group-hover:from-ink/85"></div>
+          <div class="relative flex h-full flex-col justify-end p-6 text-white">
+            <i data-lucide="shopping-bag" class="mb-4 h-7 w-7 transition-transform duration-500 group-hover:-translate-y-1"></i>
             <h3 class="text-xl font-bold">High-End Retail</h3>
-            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/60 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
+            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/80 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
               Butiksrum, der iscenesætter brandet og forlænger besøget.
             </p>
-            <span class="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-oak opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+            <span class="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider opacity-0 transition-opacity duration-500 group-hover:opacity-100">
               Se koncept <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
             </span>
           </div>
         </article>
 
         <!-- Card 4 -->
-        <article class="group relative aspect-[3/4] overflow-hidden rounded-sm border border-white/10 bg-slate800 cursor-pointer">
-          <div class="absolute inset-0 bg-gradient-to-br from-slate900 to-slate800 transition-transform duration-700 group-hover:scale-105"></div>
-          <div class="absolute inset-0 hero-grid opacity-30"></div>
-          <div class="absolute inset-0 bg-slate950/0 transition-all duration-500 group-hover:bg-slate950/70"></div>
-          <div class="relative flex h-full flex-col justify-end p-6">
-            <i data-lucide="utensils" class="mb-4 h-7 w-7 text-oak transition-transform duration-500 group-hover:-translate-y-1"></i>
+        <article class="group relative aspect-[3/4] overflow-hidden rounded-sm border border-stone-200 warm-img cursor-pointer">
+          <div class="absolute inset-0 warm-img transition-transform duration-700 group-hover:scale-105"></div>
+          <div class="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent transition-all duration-500 group-hover:from-ink/85"></div>
+          <div class="relative flex h-full flex-col justify-end p-6 text-white">
+            <i data-lucide="utensils" class="mb-4 h-7 w-7 transition-transform duration-500 group-hover:-translate-y-1"></i>
             <h3 class="text-xl font-bold">The Signature Restaurant</h3>
-            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/60 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
+            <p class="mt-2 max-h-0 overflow-hidden text-sm text-white/80 opacity-0 transition-all duration-500 group-hover:max-h-24 group-hover:opacity-100">
               Spiseoplevelser, hvor materialer og lys gør halvdelen af arbejdet.
             </p>
-            <span class="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-oak opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+            <span class="mt-4 inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider opacity-0 transition-opacity duration-500 group-hover:opacity-100">
               Se koncept <i data-lucide="arrow-up-right" class="h-3.5 w-3.5"></i>
             </span>
           </div>
@@ -307,17 +303,17 @@
   <!-- ============================================================= -->
   <!-- PM ONE METODEN — AGILE PROCESS TIMELINE                       -->
   <!-- ============================================================= -->
-  <section id="metoden" class="relative py-28 lg:py-36 bg-slate900/40 border-y border-white/5">
+  <section id="metoden" class="relative bg-canvas py-28 lg:py-36">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
 
       <!-- Section header -->
       <div class="max-w-3xl">
-        <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oak">
+        <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oakdeep">
           <span class="h-px w-8 bg-oak"></span>
           Den agile proces
         </span>
-        <h2 class="mt-6 text-4xl lg:text-5xl font-extrabold tracking-tight">PM One Metoden</h2>
-        <p class="mt-5 text-lg text-white/60">
+        <h2 class="mt-6 text-4xl lg:text-5xl tracking-tight text-ink"><span class="font-light">PM One</span> <span class="font-extrabold">Metoden</span></h2>
+        <p class="mt-5 text-lg text-stone-600">
           Fire skarpe skridt. Ingen bureaukrati, ingen ventetid. Sådan slår vi de store —
           ved at gøre det enkelt og holde tempoet.
         </p>
@@ -325,20 +321,20 @@
 
       <!-- Timeline -->
       <div class="mt-20">
-        <!-- connecting line (desktop) -->
         <div class="relative grid gap-12 lg:grid-cols-4 lg:gap-8">
-          <div class="hidden lg:block absolute top-7 left-0 right-0 h-px bg-gradient-to-r from-oak/0 via-oak/40 to-oak/0"></div>
+          <!-- connecting line (desktop) -->
+          <div class="hidden lg:block absolute top-7 left-0 right-0 h-px bg-gradient-to-r from-oak/0 via-oak/50 to-oak/0"></div>
 
           <!-- Step 1 -->
           <div class="relative group">
             <div class="flex items-center gap-4 lg:block">
-              <div class="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-oak/40 bg-slate950 text-oak transition-all group-hover:bg-oak group-hover:text-slate950">
+              <div class="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-oak/50 bg-white text-oakdeep transition-all group-hover:bg-oak group-hover:text-white group-hover:border-oak">
                 <i data-lucide="messages-square" class="h-6 w-6"></i>
               </div>
-              <span class="text-5xl font-extrabold text-white/5 lg:absolute lg:right-0 lg:top-0">01</span>
+              <span class="text-5xl font-extrabold text-stone-200 lg:absolute lg:right-0 lg:top-0">01</span>
             </div>
-            <h3 class="mt-6 text-xl font-bold">Briefing &amp; Dialog</h3>
-            <p class="mt-3 text-sm leading-relaxed text-white/55">
+            <h3 class="mt-6 text-xl font-bold text-ink">Briefing &amp; Dialog</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">
               Vi lytter. Behov, brand og budget kortlægges i en direkte samtale med beslutningstager.
             </p>
           </div>
@@ -346,13 +342,13 @@
           <!-- Step 2 -->
           <div class="relative group">
             <div class="flex items-center gap-4 lg:block">
-              <div class="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-oak/40 bg-slate950 text-oak transition-all group-hover:bg-oak group-hover:text-slate950">
+              <div class="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-oak/50 bg-white text-oakdeep transition-all group-hover:bg-oak group-hover:text-white group-hover:border-oak">
                 <i data-lucide="sparkles" class="h-6 w-6"></i>
               </div>
-              <span class="text-5xl font-extrabold text-white/5 lg:absolute lg:right-0 lg:top-0">02</span>
+              <span class="text-5xl font-extrabold text-stone-200 lg:absolute lg:right-0 lg:top-0">02</span>
             </div>
-            <h3 class="mt-6 text-xl font-bold">AI Visualisering</h3>
-            <p class="mt-3 text-sm leading-relaxed text-white/55">
+            <h3 class="mt-6 text-xl font-bold text-ink">AI Visualisering</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">
               Fotorealistiske koncepter på 48 timer. I ser rummet, før vi bygger det.
             </p>
           </div>
@@ -360,13 +356,13 @@
           <!-- Step 3 -->
           <div class="relative group">
             <div class="flex items-center gap-4 lg:block">
-              <div class="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-oak/40 bg-slate950 text-oak transition-all group-hover:bg-oak group-hover:text-slate950">
+              <div class="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-oak/50 bg-white text-oakdeep transition-all group-hover:bg-oak group-hover:text-white group-hover:border-oak">
                 <i data-lucide="hammer" class="h-6 w-6"></i>
               </div>
-              <span class="text-5xl font-extrabold text-white/5 lg:absolute lg:right-0 lg:top-0">03</span>
+              <span class="text-5xl font-extrabold text-stone-200 lg:absolute lg:right-0 lg:top-0">03</span>
             </div>
-            <h3 class="mt-6 text-xl font-bold">Midtjysk Håndværk</h3>
-            <p class="mt-3 text-sm leading-relaxed text-white/55">
+            <h3 class="mt-6 text-xl font-bold text-ink">Midtjysk Håndværk</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">
               Præcisionsproduktion med respekt for materialer, detaljer og deadlines.
             </p>
           </div>
@@ -374,13 +370,13 @@
           <!-- Step 4 -->
           <div class="relative group">
             <div class="flex items-center gap-4 lg:block">
-              <div class="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-oak/40 bg-slate950 text-oak transition-all group-hover:bg-oak group-hover:text-slate950">
+              <div class="relative z-10 flex h-14 w-14 shrink-0 items-center justify-center rounded-sm border border-oak/50 bg-white text-oakdeep transition-all group-hover:bg-oak group-hover:text-white group-hover:border-oak">
                 <i data-lucide="package-check" class="h-6 w-6"></i>
               </div>
-              <span class="text-5xl font-extrabold text-white/5 lg:absolute lg:right-0 lg:top-0">04</span>
+              <span class="text-5xl font-extrabold text-stone-200 lg:absolute lg:right-0 lg:top-0">04</span>
             </div>
-            <h3 class="mt-6 text-xl font-bold">Levering til tiden</h3>
-            <p class="mt-3 text-sm leading-relaxed text-white/55">
+            <h3 class="mt-6 text-xl font-bold text-ink">Levering til tiden</h3>
+            <p class="mt-3 text-sm leading-relaxed text-stone-600">
               Monteret, færdigt og klar til brug — når vi siger det. Done.
             </p>
           </div>
@@ -393,42 +389,40 @@
   <!-- ============================================================= -->
   <!-- FOUNDER PROFILE — "40 år på gulvet"                           -->
   <!-- ============================================================= -->
-  <section id="om-os" class="relative py-28 lg:py-36">
+  <section id="om-os" class="relative bg-white py-28 lg:py-36 border-y border-stone-200">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16 items-center">
 
         <!-- Portrait placeholder -->
         <div class="relative order-1">
-          <div class="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-white/10 bg-slate800">
-            <div class="absolute inset-0 bg-gradient-to-tr from-slate950 via-slate800 to-slate900"></div>
-            <div class="absolute inset-0 hero-grid opacity-30"></div>
+          <div class="relative aspect-[4/5] w-full overflow-hidden rounded-sm border border-stone-200 warm-img shadow-xl shadow-stone-300/40">
             <div class="relative flex h-full flex-col items-center justify-center gap-4 text-center px-8">
-              <i data-lucide="user-round" class="h-12 w-12 text-oak/60"></i>
-              <p class="text-sm font-medium text-white/50">Professionelt portræt</p>
-              <p class="text-xs text-white/30">Preben Madsen, stifter</p>
+              <i data-lucide="user-round" class="h-12 w-12 text-oakdeep/70"></i>
+              <p class="text-sm font-medium text-ink/60">Professionelt portræt</p>
+              <p class="text-xs text-ink/40">Preben Madsen, stifter</p>
             </div>
           </div>
           <!-- floating badge -->
-          <div class="absolute -bottom-6 -right-4 sm:right-8 rounded-sm border border-oak/40 bg-slate950 px-6 py-5 shadow-2xl shadow-black/40">
-            <p class="text-4xl font-extrabold text-oak leading-none">40 år</p>
-            <p class="mt-1 text-xs uppercase tracking-wider text-white/50">på gulvet</p>
+          <div class="absolute -bottom-6 -right-4 sm:right-8 rounded-sm border border-stone-200 bg-white px-6 py-5 shadow-2xl shadow-stone-400/30">
+            <p class="text-4xl font-extrabold text-oakdeep leading-none">40 år</p>
+            <p class="mt-1 text-xs uppercase tracking-wider text-stone-500">på gulvet</p>
           </div>
         </div>
 
         <!-- Editorial story -->
         <div class="order-2">
-          <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oak">
+          <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oakdeep">
             <span class="h-px w-8 bg-oak"></span>
             Manden bag
           </span>
-          <h2 class="mt-6 text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+          <h2 class="mt-6 text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-ink">
             Preben Madsen
           </h2>
-          <p class="mt-6 text-lg leading-relaxed text-white/70">
+          <p class="mt-6 text-lg leading-relaxed text-stone-700">
             I fire årtier har Preben stået på værkstedsgulvet — fra den første høvl til den seneste
             CNC-fræser. Han kender materialerne, leverandørerne og faldgruberne på rygraden.
           </p>
-          <p class="mt-5 text-base leading-relaxed text-white/55">
+          <p class="mt-5 text-base leading-relaxed text-stone-600">
             Hos PM One taler du ikke med en projektkoordinator, der skal spørge tre led op.
             Du taler med ejeren — manden, der både tegner stregen og står inde for den.
             Det betyder hurtige beslutninger, personligt ansvar og et håndtryk, der holder.
@@ -437,26 +431,26 @@
           <!-- value bullets -->
           <ul class="mt-10 space-y-4">
             <li class="flex items-start gap-4">
-              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-oak/15 text-oak">
+              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-oak/15 text-oakdeep">
                 <i data-lucide="check" class="h-4 w-4"></i>
               </span>
-              <span class="text-white/70"><span class="font-semibold text-white">Ingen bureaukrati.</span> Beslutningskraften sidder hos den, du taler med.</span>
+              <span class="text-stone-700"><span class="font-semibold text-ink">Ingen bureaukrati.</span> Beslutningskraften sidder hos den, du taler med.</span>
             </li>
             <li class="flex items-start gap-4">
-              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-oak/15 text-oak">
+              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-oak/15 text-oakdeep">
                 <i data-lucide="check" class="h-4 w-4"></i>
               </span>
-              <span class="text-white/70"><span class="font-semibold text-white">Personligt engagement.</span> Dit projekt er hans navn på spil.</span>
+              <span class="text-stone-700"><span class="font-semibold text-ink">Personligt engagement.</span> Dit projekt er hans navn på spil.</span>
             </li>
             <li class="flex items-start gap-4">
-              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-oak/15 text-oak">
+              <span class="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-sm bg-oak/15 text-oakdeep">
                 <i data-lucide="check" class="h-4 w-4"></i>
               </span>
-              <span class="text-white/70"><span class="font-semibold text-white">40 års erfaring.</span> Fra idé til montering — intet overlades til tilfældigheder.</span>
+              <span class="text-stone-700"><span class="font-semibold text-ink">40 års erfaring.</span> Fra idé til montering — intet overlades til tilfældigheder.</span>
             </li>
           </ul>
 
-          <a href="#kontakt" class="mt-10 inline-flex items-center gap-2 rounded-sm border border-white/15 px-7 py-4 text-sm font-semibold text-white transition-all hover:border-oak hover:text-oak">
+          <a href="#kontakt" class="mt-10 inline-flex items-center gap-2 rounded-sm border border-stone-300 px-7 py-4 text-sm font-semibold text-ink transition-all hover:border-oak hover:text-oakdeep">
             Tal direkte med Preben
             <i data-lucide="phone" class="h-4 w-4"></i>
           </a>
@@ -469,142 +463,142 @@
   <!-- ============================================================= -->
   <!-- LEAD CONFIGURATOR — trinvis projekt-wizard                    -->
   <!-- ============================================================= -->
-  <section id="konfigurator" class="relative py-28 lg:py-36 bg-slate900/40 border-y border-white/5">
+  <section id="konfigurator" class="relative bg-canvas py-28 lg:py-36">
     <div class="mx-auto max-w-4xl px-6 lg:px-8">
 
       <!-- Section header -->
       <div class="max-w-3xl">
-        <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oak">
+        <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oakdeep">
           <span class="h-px w-8 bg-oak"></span>
           Projekt-konfigurator
         </span>
-        <h2 class="mt-6 text-4xl lg:text-5xl font-extrabold tracking-tight">Få et prisoverslag på under et minut</h2>
-        <p class="mt-5 text-lg text-white/60">
+        <h2 class="mt-6 text-4xl lg:text-5xl tracking-tight text-ink"><span class="font-light">Få et prisoverslag på</span> <span class="font-extrabold">under et minut</span></h2>
+        <p class="mt-5 text-lg text-stone-600">
           Svar på et par hurtige spørgsmål om rum, stil og omfang — så får du et indikativt
           prisinterval med det samme. Helt uden at efterlade dine oplysninger.
         </p>
       </div>
 
       <!-- Wizard card -->
-      <div class="mt-12 rounded-sm border border-white/10 bg-slate950/60 p-6 sm:p-10">
+      <div class="mt-12 rounded-sm border border-stone-200 bg-white p-6 sm:p-10 shadow-xl shadow-stone-300/30">
 
         <!-- Progress bar -->
         <div class="mb-10">
-          <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-white/40">
+          <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-stone-400">
             <span id="wiz-step-label">Trin 1 af 6 · Rum</span>
-            <span id="wiz-step-count">25%</span>
+            <span id="wiz-step-count">17%</span>
           </div>
-          <div class="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
-            <div id="wiz-progress" class="h-full bg-oak transition-all duration-500" style="width:25%"></div>
+          <div class="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-stone-200">
+            <div id="wiz-progress" class="h-full bg-oak transition-all duration-500" style="width:17%"></div>
           </div>
         </div>
 
         <!-- ============ STEP 1 — Rumtype ============ -->
         <div class="wiz-step" data-step="1">
-          <h3 class="text-2xl font-bold">Lad os starte med stedet — hvor skal magien ske?</h3>
-          <p class="mt-2 text-sm text-white/50">Vælg det rum, der ligger tættest på din idé.</p>
+          <h3 class="text-2xl font-bold text-ink">Lad os starte med stedet — hvor skal magien ske?</h3>
+          <p class="mt-2 text-sm text-stone-500">Vælg det rum, der ligger tættest på din idé.</p>
           <div class="mt-8 grid gap-4 sm:grid-cols-2">
-            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="rumtype" data-value="Hotel / Lobby">
-              <i data-lucide="hotel" class="h-6 w-6 shrink-0 text-oak"></i>
-              <span><span class="block font-semibold">Hotel / Lobby</span><span class="block text-xs text-white/45">Ankomsten der sætter tonen</span></span>
+            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-stone-200 bg-white p-5 text-left transition-all hover:border-oak/60" data-field="rumtype" data-value="Hotel / Lobby">
+              <i data-lucide="hotel" class="h-6 w-6 shrink-0 text-oakdeep"></i>
+              <span><span class="block font-semibold text-ink">Hotel / Lobby</span><span class="block text-xs text-stone-500">Ankomsten der sætter tonen</span></span>
             </button>
-            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="rumtype" data-value="Kontor / Tech Office">
-              <i data-lucide="cpu" class="h-6 w-6 shrink-0 text-oak"></i>
-              <span><span class="block font-semibold">Kontor / Tech Office</span><span class="block text-xs text-white/45">Hvor teamet trives bedst</span></span>
+            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-stone-200 bg-white p-5 text-left transition-all hover:border-oak/60" data-field="rumtype" data-value="Kontor / Tech Office">
+              <i data-lucide="cpu" class="h-6 w-6 shrink-0 text-oakdeep"></i>
+              <span><span class="block font-semibold text-ink">Kontor / Tech Office</span><span class="block text-xs text-stone-500">Hvor teamet trives bedst</span></span>
             </button>
-            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="rumtype" data-value="Retail / Butik">
-              <i data-lucide="shopping-bag" class="h-6 w-6 shrink-0 text-oak"></i>
-              <span><span class="block font-semibold">Retail / Butik</span><span class="block text-xs text-white/45">Rummet der sælger for dig</span></span>
+            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-stone-200 bg-white p-5 text-left transition-all hover:border-oak/60" data-field="rumtype" data-value="Retail / Butik">
+              <i data-lucide="shopping-bag" class="h-6 w-6 shrink-0 text-oakdeep"></i>
+              <span><span class="block font-semibold text-ink">Retail / Butik</span><span class="block text-xs text-stone-500">Rummet der sælger for dig</span></span>
             </button>
-            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="rumtype" data-value="Restaurant / Café">
-              <i data-lucide="utensils" class="h-6 w-6 shrink-0 text-oak"></i>
-              <span><span class="block font-semibold">Restaurant / Café</span><span class="block text-xs text-white/45">Stemning man husker</span></span>
+            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-stone-200 bg-white p-5 text-left transition-all hover:border-oak/60" data-field="rumtype" data-value="Restaurant / Café">
+              <i data-lucide="utensils" class="h-6 w-6 shrink-0 text-oakdeep"></i>
+              <span><span class="block font-semibold text-ink">Restaurant / Café</span><span class="block text-xs text-stone-500">Stemning man husker</span></span>
             </button>
-            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60 sm:col-span-2" data-field="rumtype" data-value="Andet">
-              <i data-lucide="shapes" class="h-6 w-6 shrink-0 text-oak"></i>
-              <span><span class="block font-semibold">Noget helt andet — eller ikke besluttet endnu</span><span class="block text-xs text-white/45">Vi finder ud af det sammen</span></span>
+            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-stone-200 bg-white p-5 text-left transition-all hover:border-oak/60 sm:col-span-2" data-field="rumtype" data-value="Andet">
+              <i data-lucide="shapes" class="h-6 w-6 shrink-0 text-oakdeep"></i>
+              <span><span class="block font-semibold text-ink">Noget helt andet — eller ikke besluttet endnu</span><span class="block text-xs text-stone-500">Vi finder ud af det sammen</span></span>
             </button>
           </div>
         </div>
 
         <!-- ============ STEP 2 — Stemning (design-scenarie) ============ -->
         <div class="wiz-step hidden" data-step="2">
-          <h3 class="text-2xl font-bold">Forestil dig, at en gæst træder ind for første gang …</h3>
-          <p class="mt-2 text-sm text-white/50">Hvad skal de mærke i samme sekund, døren går op?</p>
+          <h3 class="text-2xl font-bold text-ink">Forestil dig, at en gæst træder ind for første gang …</h3>
+          <p class="mt-2 text-sm text-stone-500">Hvad skal de mærke i samme sekund, døren går op?</p>
           <div class="mt-8 grid gap-4 sm:grid-cols-2">
-            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="stil" data-value="Minimalistisk">
-              <i data-lucide="wind" class="h-6 w-6 shrink-0 text-oak"></i>
-              <span><span class="block font-semibold">“Hold da op, hvor er her ro.”</span><span class="block text-xs text-white/45">Minimalistisk, rent og overskudsagtigt</span></span>
+            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-stone-200 bg-white p-5 text-left transition-all hover:border-oak/60" data-field="stil" data-value="Minimalistisk">
+              <i data-lucide="wind" class="h-6 w-6 shrink-0 text-oakdeep"></i>
+              <span><span class="block font-semibold text-ink">“Hold da op, hvor er her ro.”</span><span class="block text-xs text-stone-500">Minimalistisk, rent og overskudsagtigt</span></span>
             </button>
-            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="stil" data-value="Varm & organisk">
-              <i data-lucide="leaf" class="h-6 w-6 shrink-0 text-oak"></i>
-              <span><span class="block font-semibold">“Her har jeg lyst til at blive.”</span><span class="block text-xs text-white/45">Varmt, organisk og imødekommende</span></span>
+            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-stone-200 bg-white p-5 text-left transition-all hover:border-oak/60" data-field="stil" data-value="Varm & organisk">
+              <i data-lucide="leaf" class="h-6 w-6 shrink-0 text-oakdeep"></i>
+              <span><span class="block font-semibold text-ink">“Her har jeg lyst til at blive.”</span><span class="block text-xs text-stone-500">Varmt, organisk og imødekommende</span></span>
             </button>
-            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="stil" data-value="Industriel">
-              <i data-lucide="factory" class="h-6 w-6 shrink-0 text-oak"></i>
-              <span><span class="block font-semibold">“Det her sted har kant.”</span><span class="block text-xs text-white/45">Råt, industrielt og autentisk</span></span>
+            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-stone-200 bg-white p-5 text-left transition-all hover:border-oak/60" data-field="stil" data-value="Industriel">
+              <i data-lucide="factory" class="h-6 w-6 shrink-0 text-oakdeep"></i>
+              <span><span class="block font-semibold text-ink">“Det her sted har kant.”</span><span class="block text-xs text-stone-500">Råt, industrielt og autentisk</span></span>
             </button>
-            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="stil" data-value="Eksklusiv / luksus">
-              <i data-lucide="gem" class="h-6 w-6 shrink-0 text-oak"></i>
-              <span><span class="block font-semibold">“Wow — det her er noget særligt.”</span><span class="block text-xs text-white/45">Eksklusivt, dybt og luksuriøst</span></span>
+            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-stone-200 bg-white p-5 text-left transition-all hover:border-oak/60" data-field="stil" data-value="Eksklusiv / luksus">
+              <i data-lucide="gem" class="h-6 w-6 shrink-0 text-oakdeep"></i>
+              <span><span class="block font-semibold text-ink">“Wow — det her er noget særligt.”</span><span class="block text-xs text-stone-500">Eksklusivt, dybt og luksuriøst</span></span>
             </button>
           </div>
         </div>
 
         <!-- ============ STEP 3 — Materialepalette (design-scenarie) ============ -->
         <div class="wiz-step hidden" data-step="3">
-          <h3 class="text-2xl font-bold">Det er sen eftermiddag, og solen står lavt i rummet …</h3>
-          <p class="mt-2 text-sm text-white/50">Hvilke materialer fanger lyset, når du kigger dig omkring?</p>
+          <h3 class="text-2xl font-bold text-ink">Det er sen eftermiddag, og solen står lavt i rummet …</h3>
+          <p class="mt-2 text-sm text-stone-500">Hvilke materialer fanger lyset, når du kigger dig omkring?</p>
           <div class="mt-8 grid gap-4 sm:grid-cols-2">
-            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="palette" data-value="Lyst egetræ & naturtoner">
-              <i data-lucide="trees" class="h-6 w-6 shrink-0 text-oak"></i>
-              <span><span class="block font-semibold">Lyst egetræ &amp; naturtoner</span><span class="block text-xs text-white/45">Skandinavisk, jordnært, tidløst</span></span>
+            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-stone-200 bg-white p-5 text-left transition-all hover:border-oak/60" data-field="palette" data-value="Lyst egetræ & naturtoner">
+              <i data-lucide="trees" class="h-6 w-6 shrink-0 text-oakdeep"></i>
+              <span><span class="block font-semibold text-ink">Lyst egetræ &amp; naturtoner</span><span class="block text-xs text-stone-500">Skandinavisk, jordnært, tidløst</span></span>
             </button>
-            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="palette" data-value="Mørke, dramatiske flader">
-              <i data-lucide="moon" class="h-6 w-6 shrink-0 text-oak"></i>
-              <span><span class="block font-semibold">Mørke, dramatiske flader</span><span class="block text-xs text-white/45">Sort eg, røget glas, dyb stemning</span></span>
+            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-stone-200 bg-white p-5 text-left transition-all hover:border-oak/60" data-field="palette" data-value="Mørke, dramatiske flader">
+              <i data-lucide="moon" class="h-6 w-6 shrink-0 text-oakdeep"></i>
+              <span><span class="block font-semibold text-ink">Mørke, dramatiske flader</span><span class="block text-xs text-stone-500">Sort eg, røget glas, dyb stemning</span></span>
             </button>
-            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="palette" data-value="Rene, lyse flader & tekstiler">
-              <i data-lucide="sun" class="h-6 w-6 shrink-0 text-oak"></i>
-              <span><span class="block font-semibold">Rene, lyse flader &amp; bløde tekstiler</span><span class="block text-xs text-white/45">Luftigt, lyst og indbydende</span></span>
+            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-stone-200 bg-white p-5 text-left transition-all hover:border-oak/60" data-field="palette" data-value="Rene, lyse flader & tekstiler">
+              <i data-lucide="sun" class="h-6 w-6 shrink-0 text-oakdeep"></i>
+              <span><span class="block font-semibold text-ink">Rene, lyse flader &amp; bløde tekstiler</span><span class="block text-xs text-stone-500">Luftigt, lyst og indbydende</span></span>
             </button>
-            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="palette" data-value="Messing, marmor & glimt">
-              <i data-lucide="sparkles" class="h-6 w-6 shrink-0 text-oak"></i>
-              <span><span class="block font-semibold">Messing, marmor &amp; detaljer der glimter</span><span class="block text-xs text-white/45">Eksklusivt og forfinet</span></span>
+            <button type="button" class="wiz-option group flex items-start gap-4 rounded-sm border border-stone-200 bg-white p-5 text-left transition-all hover:border-oak/60" data-field="palette" data-value="Messing, marmor & glimt">
+              <i data-lucide="sparkles" class="h-6 w-6 shrink-0 text-oakdeep"></i>
+              <span><span class="block font-semibold text-ink">Messing, marmor &amp; detaljer der glimter</span><span class="block text-xs text-stone-500">Eksklusivt og forfinet</span></span>
             </button>
           </div>
         </div>
 
         <!-- ============ STEP 4 — Omfang & størrelse (driver prisen) ============ -->
         <div class="wiz-step hidden" data-step="4">
-          <h3 class="text-2xl font-bold">Hvor stort er det — og hvor meget skal vi løfte?</h3>
-          <p class="mt-2 text-sm text-white/50">Et groft skøn er helt fint. Det er nok til at give dig et realistisk overslag.</p>
+          <h3 class="text-2xl font-bold text-ink">Hvor stort er det — og hvor meget skal vi løfte?</h3>
+          <p class="mt-2 text-sm text-stone-500">Et groft skøn er helt fint. Det er nok til at give dig et realistisk overslag.</p>
 
-          <p class="mt-8 mb-3 text-xs font-semibold uppercase tracking-wider text-white/50">Cirka størrelse</p>
+          <p class="mt-8 mb-3 text-xs font-semibold uppercase tracking-wider text-stone-500">Cirka størrelse</p>
           <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            <button type="button" class="wiz-option rounded-sm border border-white/10 bg-slate900 p-4 text-center text-sm font-semibold transition-all hover:border-oak/60" data-field="stoerrelse" data-value="Under 50 m²">Under 50 m²</button>
-            <button type="button" class="wiz-option rounded-sm border border-white/10 bg-slate900 p-4 text-center text-sm font-semibold transition-all hover:border-oak/60" data-field="stoerrelse" data-value="50–150 m²">50 – 150 m²</button>
-            <button type="button" class="wiz-option rounded-sm border border-white/10 bg-slate900 p-4 text-center text-sm font-semibold transition-all hover:border-oak/60" data-field="stoerrelse" data-value="150–400 m²">150 – 400 m²</button>
-            <button type="button" class="wiz-option rounded-sm border border-white/10 bg-slate900 p-4 text-center text-sm font-semibold transition-all hover:border-oak/60" data-field="stoerrelse" data-value="Over 400 m²">Over 400 m²</button>
+            <button type="button" class="wiz-option rounded-sm border border-stone-200 bg-white p-4 text-center text-sm font-semibold text-ink transition-all hover:border-oak/60" data-field="stoerrelse" data-value="Under 50 m²">Under 50 m²</button>
+            <button type="button" class="wiz-option rounded-sm border border-stone-200 bg-white p-4 text-center text-sm font-semibold text-ink transition-all hover:border-oak/60" data-field="stoerrelse" data-value="50–150 m²">50 – 150 m²</button>
+            <button type="button" class="wiz-option rounded-sm border border-stone-200 bg-white p-4 text-center text-sm font-semibold text-ink transition-all hover:border-oak/60" data-field="stoerrelse" data-value="150–400 m²">150 – 400 m²</button>
+            <button type="button" class="wiz-option rounded-sm border border-stone-200 bg-white p-4 text-center text-sm font-semibold text-ink transition-all hover:border-oak/60" data-field="stoerrelse" data-value="Over 400 m²">Over 400 m²</button>
           </div>
 
-          <p class="mt-8 mb-3 text-xs font-semibold uppercase tracking-wider text-white/50">Hvad skal vi stå for?</p>
+          <p class="mt-8 mb-3 text-xs font-semibold uppercase tracking-wider text-stone-500">Hvad skal vi stå for?</p>
           <div class="grid gap-4 sm:grid-cols-3">
-            <button type="button" class="wiz-option rounded-sm border border-white/10 bg-slate900 p-4 text-center text-sm font-semibold transition-all hover:border-oak/60" data-field="scope" data-value="Møbler & inventar">Møbler &amp; inventar</button>
-            <button type="button" class="wiz-option rounded-sm border border-white/10 bg-slate900 p-4 text-center text-sm font-semibold transition-all hover:border-oak/60" data-field="scope" data-value="Fuld indretning">Fuld indretning</button>
-            <button type="button" class="wiz-option rounded-sm border border-white/10 bg-slate900 p-4 text-center text-sm font-semibold transition-all hover:border-oak/60" data-field="scope" data-value="Totalentreprise">Totalentreprise (alt)</button>
+            <button type="button" class="wiz-option rounded-sm border border-stone-200 bg-white p-4 text-center text-sm font-semibold text-ink transition-all hover:border-oak/60" data-field="scope" data-value="Møbler & inventar">Møbler &amp; inventar</button>
+            <button type="button" class="wiz-option rounded-sm border border-stone-200 bg-white p-4 text-center text-sm font-semibold text-ink transition-all hover:border-oak/60" data-field="scope" data-value="Fuld indretning">Fuld indretning</button>
+            <button type="button" class="wiz-option rounded-sm border border-stone-200 bg-white p-4 text-center text-sm font-semibold text-ink transition-all hover:border-oak/60" data-field="scope" data-value="Totalentreprise">Totalentreprise (alt)</button>
           </div>
         </div>
 
         <!-- ============ STEP 5 — Prisoverslag (vises FØR kontaktinfo) ============ -->
         <div class="wiz-step hidden" data-step="5">
           <div class="text-center">
-            <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oak">
+            <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oakdeep">
               <span class="h-px w-8 bg-oak"></span> Dit øjeblikkelige overslag <span class="h-px w-8 bg-oak"></span>
             </span>
-            <h3 class="mt-5 text-2xl font-bold">Et projekt som dit lander typisk her</h3>
-            <p id="wiz-estimate-range" class="mt-6 text-4xl sm:text-5xl font-extrabold text-oak">— kr.</p>
-            <p class="mt-3 text-sm text-white/50">Indikativt prisinterval ekskl. moms · baseret på dine valg</p>
+            <h3 class="mt-5 text-2xl font-bold text-ink">Et projekt som dit lander typisk her</h3>
+            <p id="wiz-estimate-range" class="mt-6 text-4xl sm:text-5xl font-extrabold text-oakdeep">— kr.</p>
+            <p class="mt-3 text-sm text-stone-500">Indikativt prisinterval ekskl. moms · baseret på dine valg</p>
           </div>
 
           <!-- Recap of choices -->
@@ -612,9 +606,9 @@
             <!-- filled by JS -->
           </dl>
 
-          <div class="mt-8 rounded-sm border border-white/10 bg-slate900/60 p-5 text-sm text-white/60">
+          <div class="mt-8 rounded-sm border border-stone-200 bg-stone-50 p-5 text-sm text-stone-600">
             <p class="flex items-start gap-3">
-              <i data-lucide="info" class="h-5 w-5 shrink-0 text-oak"></i>
+              <i data-lucide="info" class="h-5 w-5 shrink-0 text-oakdeep"></i>
               Overslaget er vejledende og uforpligtende. Vil du have et præcist tilbud
               + fotorealistiske AI-koncepter på 48 timer? Så efterlad din info i næste trin.
             </p>
@@ -623,12 +617,12 @@
 
         <!-- ============ STEP 6 — Kontakt + resumé ============ -->
         <div class="wiz-step hidden" data-step="6">
-          <h3 class="text-2xl font-bold">Skal vi sende det fulde oplæg afsted?</h3>
-          <p class="mt-2 text-sm text-white/50">Du får et præcist tilbud + AI-koncepter inden for 48 timer — helt uden binding.</p>
+          <h3 class="text-2xl font-bold text-ink">Skal vi sende det fulde oplæg afsted?</h3>
+          <p class="mt-2 text-sm text-stone-500">Du får et præcist tilbud + AI-koncepter inden for 48 timer — helt uden binding.</p>
 
           <!-- Live resumé -->
           <div class="mt-6 rounded-sm border border-oak/30 bg-oak/5 p-5">
-            <p class="text-xs font-semibold uppercase tracking-wider text-oak mb-3">Dit oplæg</p>
+            <p class="text-xs font-semibold uppercase tracking-wider text-oakdeep mb-3">Dit oplæg</p>
             <dl id="wiz-summary" class="grid gap-2 text-sm sm:grid-cols-2">
               <!-- filled by JS -->
             </dl>
@@ -636,46 +630,46 @@
 
           <div class="mt-6 grid gap-5 sm:grid-cols-2">
             <div>
-              <label for="wiz-name" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">Navn *</label>
-              <input id="wiz-name" type="text" class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak" placeholder="Dit navn" />
+              <label for="wiz-name" class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">Navn *</label>
+              <input id="wiz-name" type="text" class="w-full rounded-sm border border-stone-300 bg-white px-4 py-3 text-sm text-ink placeholder-stone-400 focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak" placeholder="Dit navn" />
             </div>
             <div>
-              <label for="wiz-company" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">Virksomhed</label>
-              <input id="wiz-company" type="text" class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak" placeholder="Virksomhedsnavn" />
+              <label for="wiz-company" class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">Virksomhed</label>
+              <input id="wiz-company" type="text" class="w-full rounded-sm border border-stone-300 bg-white px-4 py-3 text-sm text-ink placeholder-stone-400 focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak" placeholder="Virksomhedsnavn" />
             </div>
             <div>
-              <label for="wiz-email" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">E-mail *</label>
-              <input id="wiz-email" type="email" class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak" placeholder="dig@virksomhed.dk" />
+              <label for="wiz-email" class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">E-mail *</label>
+              <input id="wiz-email" type="email" class="w-full rounded-sm border border-stone-300 bg-white px-4 py-3 text-sm text-ink placeholder-stone-400 focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak" placeholder="dig@virksomhed.dk" />
             </div>
             <div>
-              <label for="wiz-phone" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">Telefon</label>
-              <input id="wiz-phone" type="tel" class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak" placeholder="+45 …" />
+              <label for="wiz-phone" class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">Telefon</label>
+              <input id="wiz-phone" type="tel" class="w-full rounded-sm border border-stone-300 bg-white px-4 py-3 text-sm text-ink placeholder-stone-400 focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak" placeholder="+45 …" />
             </div>
           </div>
-          <p id="wiz-error" class="hidden mt-4 text-sm text-red-400">Udfyld venligst navn og en gyldig e-mail.</p>
+          <p id="wiz-error" class="hidden mt-4 text-sm text-red-500">Udfyld venligst navn og en gyldig e-mail.</p>
         </div>
 
         <!-- ============ DONE — success ============ -->
         <div id="wiz-done" class="hidden text-center py-10">
-          <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-oak/15 text-oak">
+          <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-oak/15 text-oakdeep">
             <i data-lucide="check-check" class="h-8 w-8"></i>
           </span>
-          <h3 class="mt-6 text-2xl font-bold">Tak — vi er på sagen!</h3>
-          <p class="mt-3 text-white/60 max-w-md mx-auto">
+          <h3 class="mt-6 text-2xl font-bold text-ink">Tak — vi er på sagen!</h3>
+          <p class="mt-3 text-stone-600 max-w-md mx-auto">
             Dit oplæg er modtaget (demo). Preben vender personligt tilbage inden for 48 timer
             med de første tanker.
           </p>
-          <button type="button" id="wiz-restart" class="mt-8 inline-flex items-center gap-2 rounded-sm border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-oak hover:text-oak">
+          <button type="button" id="wiz-restart" class="mt-8 inline-flex items-center gap-2 rounded-sm border border-stone-300 px-6 py-3 text-sm font-semibold text-ink transition-all hover:border-oak hover:text-oakdeep">
             <i data-lucide="rotate-ccw" class="h-4 w-4"></i> Start forfra
           </button>
         </div>
 
         <!-- Navigation buttons -->
         <div id="wiz-nav" class="mt-10 flex items-center justify-between">
-          <button type="button" id="wiz-back" class="inline-flex items-center gap-2 rounded-sm border border-white/15 px-6 py-3 text-sm font-semibold text-white/70 transition-all hover:text-white disabled:opacity-30 disabled:cursor-not-allowed" disabled>
+          <button type="button" id="wiz-back" class="inline-flex items-center gap-2 rounded-sm border border-stone-300 px-6 py-3 text-sm font-semibold text-stone-500 transition-all hover:text-ink disabled:opacity-30 disabled:cursor-not-allowed" disabled>
             <i data-lucide="arrow-left" class="h-4 w-4"></i> Tilbage
           </button>
-          <button type="button" id="wiz-next" class="inline-flex items-center gap-2 rounded-sm bg-oak px-7 py-3 text-sm font-semibold text-slate950 transition-all hover:bg-oaklight">
+          <button type="button" id="wiz-next" class="inline-flex items-center gap-2 rounded-sm bg-ink px-7 py-3 text-sm font-semibold text-white transition-all hover:bg-oakdeep">
             Videre <i data-lucide="arrow-right" class="h-4 w-4"></i>
           </button>
         </div>
@@ -687,20 +681,20 @@
   <!-- ============================================================= -->
   <!-- CONTACT / CTA + FOOTER                                        -->
   <!-- ============================================================= -->
-  <section id="kontakt" class="relative pt-28 lg:pt-36 bg-slate900/40 border-t border-white/5">
+  <section id="kontakt" class="relative bg-white pt-28 lg:pt-36 border-t border-stone-200">
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
       <div class="grid lg:grid-cols-2 gap-16">
 
         <!-- CTA copy -->
         <div>
-          <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oak">
+          <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oakdeep">
             <span class="h-px w-8 bg-oak"></span>
             Lad os bygge noget
           </span>
-          <h2 class="mt-6 text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+          <h2 class="mt-6 text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight text-ink">
             Book et uforpligtende møde
           </h2>
-          <p class="mt-6 text-lg leading-relaxed text-white/60 max-w-md">
+          <p class="mt-6 text-lg leading-relaxed text-stone-600 max-w-md">
             Fortæl os om rummet, brandet eller idéen. Inden for 48 timer vender vi tilbage
             med de første tanker — helt uden binding.
           </p>
@@ -708,71 +702,71 @@
           <!-- contact details -->
           <div class="mt-12 space-y-6">
             <div class="flex items-center gap-4">
-              <span class="flex h-11 w-11 items-center justify-center rounded-sm border border-white/10 text-oak">
+              <span class="flex h-11 w-11 items-center justify-center rounded-sm bg-stone-100 text-oakdeep">
                 <i data-lucide="map-pin" class="h-5 w-5"></i>
               </span>
               <div>
-                <p class="text-sm font-semibold text-white">PM One ApS</p>
-                <p class="text-sm text-white/50">Herning, Danmark</p>
+                <p class="text-sm font-semibold text-ink">PM One ApS</p>
+                <p class="text-sm text-stone-500">Herning, Danmark</p>
               </div>
             </div>
             <div class="flex items-center gap-4">
-              <span class="flex h-11 w-11 items-center justify-center rounded-sm border border-white/10 text-oak">
+              <span class="flex h-11 w-11 items-center justify-center rounded-sm bg-stone-100 text-oakdeep">
                 <i data-lucide="mail" class="h-5 w-5"></i>
               </span>
               <div>
-                <p class="text-sm font-semibold text-white">kontakt@pmone.dk</p>
-                <p class="text-sm text-white/50">Vi svarer hurtigt</p>
+                <p class="text-sm font-semibold text-ink">kontakt@pmone.dk</p>
+                <p class="text-sm text-stone-500">Vi svarer hurtigt</p>
               </div>
             </div>
             <div class="flex items-center gap-4">
-              <span class="flex h-11 w-11 items-center justify-center rounded-sm border border-white/10 text-oak">
+              <span class="flex h-11 w-11 items-center justify-center rounded-sm bg-stone-100 text-oakdeep">
                 <i data-lucide="phone" class="h-5 w-5"></i>
               </span>
               <div>
-                <p class="text-sm font-semibold text-white">+45 00 00 00 00</p>
-                <p class="text-sm text-white/50">Direkte til Preben</p>
+                <p class="text-sm font-semibold text-ink">+45 00 00 00 00</p>
+                <p class="text-sm text-stone-500">Direkte til Preben</p>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Contact form -->
-        <div class="rounded-sm border border-white/10 bg-slate950/60 p-8 lg:p-10">
+        <div class="rounded-sm border border-stone-200 bg-canvas p-8 lg:p-10 shadow-xl shadow-stone-300/30">
           <form id="contact-form" class="space-y-6">
             <div class="grid sm:grid-cols-2 gap-6">
               <div>
-                <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">Navn</label>
+                <label for="name" class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">Navn</label>
                 <input id="name" name="name" type="text" required
-                  class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 transition-colors focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak"
+                  class="w-full rounded-sm border border-stone-300 bg-white px-4 py-3 text-sm text-ink placeholder-stone-400 transition-colors focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak"
                   placeholder="Dit navn" />
               </div>
               <div>
-                <label for="company" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">Virksomhed</label>
+                <label for="company" class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">Virksomhed</label>
                 <input id="company" name="company" type="text"
-                  class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 transition-colors focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak"
+                  class="w-full rounded-sm border border-stone-300 bg-white px-4 py-3 text-sm text-ink placeholder-stone-400 transition-colors focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak"
                   placeholder="Virksomhedsnavn" />
               </div>
             </div>
             <div>
-              <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">E-mail</label>
+              <label for="email" class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">E-mail</label>
               <input id="email" name="email" type="email" required
-                class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 transition-colors focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak"
+                class="w-full rounded-sm border border-stone-300 bg-white px-4 py-3 text-sm text-ink placeholder-stone-400 transition-colors focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak"
                 placeholder="dig@virksomhed.dk" />
             </div>
             <div>
-              <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">Fortæl om projektet</label>
+              <label for="message" class="block text-xs font-semibold uppercase tracking-wider text-stone-500 mb-2">Fortæl om projektet</label>
               <textarea id="message" name="message" rows="4"
-                class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 transition-colors focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak resize-none"
+                class="w-full rounded-sm border border-stone-300 bg-white px-4 py-3 text-sm text-ink placeholder-stone-400 transition-colors focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak resize-none"
                 placeholder="Rum, brand, idé, deadline …"></textarea>
             </div>
             <button type="submit"
-              class="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-oak px-7 py-4 text-sm font-semibold text-slate950 transition-all hover:bg-oaklight hover:shadow-xl hover:shadow-oak/25">
+              class="inline-flex w-full items-center justify-center gap-2 rounded-sm bg-ink px-7 py-4 text-sm font-semibold text-white transition-all hover:bg-oakdeep">
               Send forespørgsel
               <i data-lucide="send" class="h-4 w-4"></i>
             </button>
             <!-- success message (toggled by JS) -->
-            <p id="form-success" class="hidden text-center text-sm text-oak">
+            <p id="form-success" class="hidden text-center text-sm text-oakdeep">
               Tak! Vi vender tilbage inden for 48 timer.
             </p>
           </form>
@@ -781,18 +775,18 @@
       </div>
 
       <!-- Footer bar -->
-      <footer class="mt-24 border-t border-white/5 py-10">
+      <footer class="mt-24 border-t border-stone-200 py-10">
         <div class="flex flex-col md:flex-row items-center justify-between gap-6">
           <!-- logo -->
           <div class="flex items-center gap-3">
-            <span class="flex h-9 w-9 items-center justify-center rounded-sm border border-oak/60 text-oak font-bold text-sm">PM</span>
-            <span class="text-sm text-white/50">© 2026 PM One ApS · Herning · CVR 00 00 00 00</span>
+            <span class="flex h-9 w-9 items-center justify-center rounded-sm border border-oak text-oakdeep font-bold text-sm">PM</span>
+            <span class="text-sm text-stone-500">© 2026 PM One ApS · Herning · CVR 00 00 00 00</span>
           </div>
           <!-- footer links -->
-          <div class="flex items-center gap-8 text-sm text-white/50">
-            <a href="#koncepter" class="hover:text-oak transition-colors">Koncepter</a>
-            <a href="#metoden" class="hover:text-oak transition-colors">Metoden</a>
-            <a href="#om-os" class="hover:text-oak transition-colors">Om Os</a>
+          <div class="flex items-center gap-8 text-sm text-stone-500">
+            <a href="#koncepter" class="hover:text-oakdeep transition-colors">Koncepter</a>
+            <a href="#metoden" class="hover:text-oakdeep transition-colors">Metoden</a>
+            <a href="#om-os" class="hover:text-oakdeep transition-colors">Om Os</a>
           </div>
         </div>
       </footer>
@@ -829,13 +823,13 @@
       });
     });
 
-    // --- Header background shift on scroll ---
+    // --- Header shadow on scroll ---
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
       if (window.scrollY > 20) {
-        header.classList.add('bg-slate950/90', 'shadow-lg', 'shadow-black/20');
+        header.classList.add('bg-canvas/95', 'shadow-sm', 'shadow-stone-300/40');
       } else {
-        header.classList.remove('bg-slate950/90', 'shadow-lg', 'shadow-black/20');
+        header.classList.remove('bg-canvas/95', 'shadow-sm', 'shadow-stone-300/40');
       }
     });
 
@@ -892,9 +886,9 @@
           data[field] = btn.dataset.value;
           document.querySelectorAll('.wiz-option[data-field="' + field + '"]').forEach((sib) => {
             sib.classList.remove('border-oak', 'bg-oak/10', 'ring-1', 'ring-oak');
-            sib.classList.add('border-white/10');
+            sib.classList.add('border-stone-200');
           });
-          btn.classList.remove('border-white/10');
+          btn.classList.remove('border-stone-200');
           btn.classList.add('border-oak', 'bg-oak/10', 'ring-1', 'ring-oak');
         });
       });
@@ -913,10 +907,10 @@
         recapEl.innerHTML = '';
         Object.keys(summaryLabels).forEach((key) => {
           const row = document.createElement('div');
-          row.className = 'flex items-center justify-between rounded-sm border border-white/10 bg-slate900/60 px-4 py-3';
+          row.className = 'flex items-center justify-between rounded-sm border border-stone-200 bg-stone-50 px-4 py-3';
           row.innerHTML =
-            '<dt class="text-white/45">' + summaryLabels[key] + '</dt>' +
-            '<dd class="font-semibold text-white text-right">' + (data[key] || '—') + '</dd>';
+            '<dt class="text-stone-500">' + summaryLabels[key] + '</dt>' +
+            '<dd class="font-semibold text-ink text-right">' + (data[key] || '—') + '</dd>';
           recapEl.appendChild(row);
         });
       }
@@ -928,15 +922,15 @@
           const wrap = document.createElement('div');
           wrap.className = 'flex flex-col';
           wrap.innerHTML =
-            '<dt class="text-xs uppercase tracking-wider text-white/40">' + summaryLabels[key] + '</dt>' +
-            '<dd class="font-semibold text-white">' + (data[key] || '—') + '</dd>';
+            '<dt class="text-xs uppercase tracking-wider text-stone-400">' + summaryLabels[key] + '</dt>' +
+            '<dd class="font-semibold text-ink">' + (data[key] || '—') + '</dd>';
           summaryEl.appendChild(wrap);
         });
         const est = document.createElement('div');
         est.className = 'flex flex-col sm:col-span-2 border-t border-oak/20 pt-3 mt-1';
         est.innerHTML =
-          '<dt class="text-xs uppercase tracking-wider text-oak">Indikativt overslag</dt>' +
-          '<dd class="font-bold text-oak">' + kr(low) + ' – ' + kr(high) + '</dd>';
+          '<dt class="text-xs uppercase tracking-wider text-oakdeep">Indikativt overslag</dt>' +
+          '<dd class="font-bold text-oakdeep">' + kr(low) + ' – ' + kr(high) + '</dd>';
         summaryEl.appendChild(est);
       }
 
@@ -1001,7 +995,7 @@
         Object.keys(data).forEach((k) => (data[k] = ''));
         document.querySelectorAll('.wiz-option').forEach((b) => {
           b.classList.remove('border-oak', 'bg-oak/10', 'ring-1', 'ring-oak');
-          b.classList.add('border-white/10');
+          b.classList.add('border-stone-200');
         });
         ['wiz-name', 'wiz-company', 'wiz-email', 'wiz-phone'].forEach((id) => (document.getElementById(id).value = ''));
         doneEl.classList.add('hidden');
