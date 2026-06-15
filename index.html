@@ -88,6 +88,7 @@
         <div class="hidden md:flex items-center gap-10">
           <a href="#koncepter" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Koncepter</a>
           <a href="#metoden" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Metoden</a>
+          <a href="#konfigurator" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Konfigurator</a>
           <a href="#om-os" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Om Os</a>
           <a href="#kontakt" class="text-sm font-medium text-white/70 hover:text-white transition-colors">Kontakt</a>
         </div>
@@ -110,6 +111,7 @@
       <div class="flex flex-col px-6 py-6 gap-1">
         <a href="#koncepter" class="mobile-link py-3 text-base font-medium text-white/80 hover:text-oak transition-colors border-b border-white/5">Koncepter</a>
         <a href="#metoden" class="mobile-link py-3 text-base font-medium text-white/80 hover:text-oak transition-colors border-b border-white/5">Metoden</a>
+        <a href="#konfigurator" class="mobile-link py-3 text-base font-medium text-white/80 hover:text-oak transition-colors border-b border-white/5">Konfigurator</a>
         <a href="#om-os" class="mobile-link py-3 text-base font-medium text-white/80 hover:text-oak transition-colors border-b border-white/5">Om Os</a>
         <a href="#kontakt" class="mobile-link py-3 text-base font-medium text-white/80 hover:text-oak transition-colors border-b border-white/5">Kontakt</a>
         <a href="#kontakt" class="mobile-link mt-4 inline-flex items-center justify-center gap-2 rounded-sm bg-oak px-5 py-3 text-sm font-semibold text-slate950">
@@ -465,6 +467,173 @@
   </section>
 
   <!-- ============================================================= -->
+  <!-- LEAD CONFIGURATOR — trinvis projekt-wizard                    -->
+  <!-- ============================================================= -->
+  <section id="konfigurator" class="relative py-28 lg:py-36 bg-slate900/40 border-y border-white/5">
+    <div class="mx-auto max-w-4xl px-6 lg:px-8">
+
+      <!-- Section header -->
+      <div class="max-w-3xl">
+        <span class="eyebrow inline-flex items-center gap-3 text-xs font-semibold uppercase text-oak">
+          <span class="h-px w-8 bg-oak"></span>
+          Projekt-konfigurator
+        </span>
+        <h2 class="mt-6 text-4xl lg:text-5xl font-extrabold tracking-tight">Skitsér dit projekt på 30 sekunder</h2>
+        <p class="mt-5 text-lg text-white/60">
+          Fire hurtige trin. Så ved vi præcis, hvor vi skal starte — og du får et skarpere svar tilbage.
+        </p>
+      </div>
+
+      <!-- Wizard card -->
+      <div class="mt-12 rounded-sm border border-white/10 bg-slate950/60 p-6 sm:p-10">
+
+        <!-- Progress bar -->
+        <div class="mb-10">
+          <div class="flex items-center justify-between text-xs font-semibold uppercase tracking-wider text-white/40">
+            <span id="wiz-step-label">Trin 1 af 4 · Rumtype</span>
+            <span id="wiz-step-count">25%</span>
+          </div>
+          <div class="mt-3 h-1.5 w-full overflow-hidden rounded-full bg-white/10">
+            <div id="wiz-progress" class="h-full bg-oak transition-all duration-500" style="width:25%"></div>
+          </div>
+        </div>
+
+        <!-- ============ STEP 1 — Rumtype ============ -->
+        <div class="wiz-step" data-step="1">
+          <h3 class="text-2xl font-bold">Hvilken type rum handler det om?</h3>
+          <p class="mt-2 text-sm text-white/50">Vælg det, der er tættest på.</p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="rumtype" data-value="Hotel / Lobby">
+              <i data-lucide="hotel" class="h-6 w-6 text-oak"></i>
+              <span class="font-semibold">Hotel / Lobby</span>
+            </button>
+            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="rumtype" data-value="Kontor / Tech Office">
+              <i data-lucide="cpu" class="h-6 w-6 text-oak"></i>
+              <span class="font-semibold">Kontor / Tech Office</span>
+            </button>
+            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="rumtype" data-value="Retail / Butik">
+              <i data-lucide="shopping-bag" class="h-6 w-6 text-oak"></i>
+              <span class="font-semibold">Retail / Butik</span>
+            </button>
+            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="rumtype" data-value="Restaurant / Café">
+              <i data-lucide="utensils" class="h-6 w-6 text-oak"></i>
+              <span class="font-semibold">Restaurant / Café</span>
+            </button>
+            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60 sm:col-span-2" data-field="rumtype" data-value="Andet">
+              <i data-lucide="shapes" class="h-6 w-6 text-oak"></i>
+              <span class="font-semibold">Andet / ved ikke endnu</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ============ STEP 2 — Stil ============ -->
+        <div class="wiz-step hidden" data-step="2">
+          <h3 class="text-2xl font-bold">Hvilken stemning skal rummet have?</h3>
+          <p class="mt-2 text-sm text-white/50">Vælg det udtryk, der passer til brandet.</p>
+          <div class="mt-8 grid gap-4 sm:grid-cols-2">
+            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="stil" data-value="Minimalistisk">
+              <i data-lucide="minus" class="h-6 w-6 text-oak"></i>
+              <span class="font-semibold">Minimalistisk &amp; skarp</span>
+            </button>
+            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="stil" data-value="Varm & organisk">
+              <i data-lucide="leaf" class="h-6 w-6 text-oak"></i>
+              <span class="font-semibold">Varm &amp; organisk</span>
+            </button>
+            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="stil" data-value="Industriel">
+              <i data-lucide="factory" class="h-6 w-6 text-oak"></i>
+              <span class="font-semibold">Rå &amp; industriel</span>
+            </button>
+            <button type="button" class="wiz-option group flex items-center gap-4 rounded-sm border border-white/10 bg-slate900 p-5 text-left transition-all hover:border-oak/60" data-field="stil" data-value="Eksklusiv / luksus">
+              <i data-lucide="gem" class="h-6 w-6 text-oak"></i>
+              <span class="font-semibold">Eksklusiv &amp; luksuriøs</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ============ STEP 3 — Omfang ============ -->
+        <div class="wiz-step hidden" data-step="3">
+          <h3 class="text-2xl font-bold">Omfang &amp; tidshorisont</h3>
+          <p class="mt-2 text-sm text-white/50">Et groft skøn er fint — det hjælper os med at ramme rigtigt.</p>
+
+          <p class="mt-8 mb-3 text-xs font-semibold uppercase tracking-wider text-white/50">Indikativt budget</p>
+          <div class="grid gap-4 sm:grid-cols-3">
+            <button type="button" class="wiz-option rounded-sm border border-white/10 bg-slate900 p-4 text-center text-sm font-semibold transition-all hover:border-oak/60" data-field="budget" data-value="Under 250k">Under 250.000 kr.</button>
+            <button type="button" class="wiz-option rounded-sm border border-white/10 bg-slate900 p-4 text-center text-sm font-semibold transition-all hover:border-oak/60" data-field="budget" data-value="250k–1 mio.">250k – 1 mio. kr.</button>
+            <button type="button" class="wiz-option rounded-sm border border-white/10 bg-slate900 p-4 text-center text-sm font-semibold transition-all hover:border-oak/60" data-field="budget" data-value="Over 1 mio.">Over 1 mio. kr.</button>
+          </div>
+
+          <p class="mt-8 mb-3 text-xs font-semibold uppercase tracking-wider text-white/50">Ønsket opstart</p>
+          <div class="grid gap-4 sm:grid-cols-3">
+            <button type="button" class="wiz-option rounded-sm border border-white/10 bg-slate900 p-4 text-center text-sm font-semibold transition-all hover:border-oak/60" data-field="tid" data-value="Hurtigst muligt">Hurtigst muligt</button>
+            <button type="button" class="wiz-option rounded-sm border border-white/10 bg-slate900 p-4 text-center text-sm font-semibold transition-all hover:border-oak/60" data-field="tid" data-value="1–3 måneder">1 – 3 måneder</button>
+            <button type="button" class="wiz-option rounded-sm border border-white/10 bg-slate900 p-4 text-center text-sm font-semibold transition-all hover:border-oak/60" data-field="tid" data-value="Senere / planlægning">Senere / planlægning</button>
+          </div>
+        </div>
+
+        <!-- ============ STEP 4 — Kontakt + resumé ============ -->
+        <div class="wiz-step hidden" data-step="4">
+          <h3 class="text-2xl font-bold">Hvor sender vi oplægget hen?</h3>
+          <p class="mt-2 text-sm text-white/50">Vi vender tilbage inden for 48 timer — helt uden binding.</p>
+
+          <!-- Live resumé -->
+          <div class="mt-6 rounded-sm border border-oak/30 bg-oak/5 p-5">
+            <p class="text-xs font-semibold uppercase tracking-wider text-oak mb-3">Dit oplæg</p>
+            <dl id="wiz-summary" class="grid gap-2 text-sm sm:grid-cols-2">
+              <!-- filled by JS -->
+            </dl>
+          </div>
+
+          <div class="mt-6 grid gap-5 sm:grid-cols-2">
+            <div>
+              <label for="wiz-name" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">Navn *</label>
+              <input id="wiz-name" type="text" class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak" placeholder="Dit navn" />
+            </div>
+            <div>
+              <label for="wiz-company" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">Virksomhed</label>
+              <input id="wiz-company" type="text" class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak" placeholder="Virksomhedsnavn" />
+            </div>
+            <div>
+              <label for="wiz-email" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">E-mail *</label>
+              <input id="wiz-email" type="email" class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak" placeholder="dig@virksomhed.dk" />
+            </div>
+            <div>
+              <label for="wiz-phone" class="block text-xs font-semibold uppercase tracking-wider text-white/50 mb-2">Telefon</label>
+              <input id="wiz-phone" type="tel" class="w-full rounded-sm border border-white/10 bg-slate900 px-4 py-3 text-sm text-white placeholder-white/30 focus:border-oak focus:outline-none focus:ring-1 focus:ring-oak" placeholder="+45 …" />
+            </div>
+          </div>
+          <p id="wiz-error" class="hidden mt-4 text-sm text-red-400">Udfyld venligst navn og en gyldig e-mail.</p>
+        </div>
+
+        <!-- ============ DONE — success ============ -->
+        <div id="wiz-done" class="hidden text-center py-10">
+          <span class="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-oak/15 text-oak">
+            <i data-lucide="check-check" class="h-8 w-8"></i>
+          </span>
+          <h3 class="mt-6 text-2xl font-bold">Tak — vi er på sagen!</h3>
+          <p class="mt-3 text-white/60 max-w-md mx-auto">
+            Dit oplæg er modtaget (demo). Preben vender personligt tilbage inden for 48 timer
+            med de første tanker.
+          </p>
+          <button type="button" id="wiz-restart" class="mt-8 inline-flex items-center gap-2 rounded-sm border border-white/15 px-6 py-3 text-sm font-semibold text-white transition-all hover:border-oak hover:text-oak">
+            <i data-lucide="rotate-ccw" class="h-4 w-4"></i> Start forfra
+          </button>
+        </div>
+
+        <!-- Navigation buttons -->
+        <div id="wiz-nav" class="mt-10 flex items-center justify-between">
+          <button type="button" id="wiz-back" class="inline-flex items-center gap-2 rounded-sm border border-white/15 px-6 py-3 text-sm font-semibold text-white/70 transition-all hover:text-white disabled:opacity-30 disabled:cursor-not-allowed" disabled>
+            <i data-lucide="arrow-left" class="h-4 w-4"></i> Tilbage
+          </button>
+          <button type="button" id="wiz-next" class="inline-flex items-center gap-2 rounded-sm bg-oak px-7 py-3 text-sm font-semibold text-slate950 transition-all hover:bg-oaklight">
+            Videre <i data-lucide="arrow-right" class="h-4 w-4"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================= -->
   <!-- CONTACT / CTA + FOOTER                                        -->
   <!-- ============================================================= -->
   <section id="kontakt" class="relative pt-28 lg:pt-36 bg-slate900/40 border-t border-white/5">
@@ -628,6 +797,124 @@
       form.reset();
       setTimeout(() => success.classList.add('hidden'), 5000);
     });
+
+    // --- Lead configurator: trinvis projekt-wizard (demo, no backend) ---
+    (function () {
+      const TOTAL = 4;
+      const labels = {
+        1: 'Rumtype', 2: 'Stil', 3: 'Omfang', 4: 'Kontakt',
+      };
+      const summaryLabels = {
+        rumtype: 'Rumtype', stil: 'Stil', budget: 'Budget', tid: 'Opstart',
+      };
+      let current = 1;
+      const data = { rumtype: '', stil: '', budget: '', tid: '' };
+
+      const steps = document.querySelectorAll('.wiz-step');
+      const progress = document.getElementById('wiz-progress');
+      const stepLabel = document.getElementById('wiz-step-label');
+      const stepCount = document.getElementById('wiz-step-count');
+      const backBtn = document.getElementById('wiz-back');
+      const nextBtn = document.getElementById('wiz-next');
+      const navBar = document.getElementById('wiz-nav');
+      const errorEl = document.getElementById('wiz-error');
+      const doneEl = document.getElementById('wiz-done');
+      const summaryEl = document.getElementById('wiz-summary');
+
+      // Selectable option buttons
+      document.querySelectorAll('.wiz-option').forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const field = btn.dataset.field;
+          data[field] = btn.dataset.value;
+          // clear siblings sharing the same field, then mark this one
+          document.querySelectorAll('.wiz-option[data-field="' + field + '"]').forEach((sib) => {
+            sib.classList.remove('border-oak', 'bg-oak/10', 'ring-1', 'ring-oak');
+            sib.classList.add('border-white/10');
+          });
+          btn.classList.remove('border-white/10');
+          btn.classList.add('border-oak', 'bg-oak/10', 'ring-1', 'ring-oak');
+        });
+      });
+
+      function showStep(n) {
+        steps.forEach((s) => s.classList.toggle('hidden', Number(s.dataset.step) !== n));
+        const pct = Math.round((n / TOTAL) * 100);
+        progress.style.width = pct + '%';
+        stepLabel.textContent = 'Trin ' + n + ' af ' + TOTAL + ' · ' + labels[n];
+        stepCount.textContent = pct + '%';
+        backBtn.disabled = n === 1;
+        nextBtn.innerHTML = n === TOTAL
+          ? 'Send forespørgsel <i data-lucide="send" class="h-4 w-4"></i>'
+          : 'Videre <i data-lucide="arrow-right" class="h-4 w-4"></i>';
+        if (n === TOTAL) renderSummary();
+        lucide.createIcons();
+      }
+
+      function renderSummary() {
+        summaryEl.innerHTML = '';
+        Object.keys(summaryLabels).forEach((key) => {
+          const wrap = document.createElement('div');
+          wrap.className = 'flex flex-col';
+          wrap.innerHTML =
+            '<dt class="text-xs uppercase tracking-wider text-white/40">' + summaryLabels[key] + '</dt>' +
+            '<dd class="font-semibold text-white">' + (data[key] || '—') + '</dd>';
+          summaryEl.appendChild(wrap);
+        });
+      }
+
+      // Require a selection on the choice steps before advancing
+      function stepValid(n) {
+        if (n === 1) return !!data.rumtype;
+        if (n === 2) return !!data.stil;
+        if (n === 3) return !!data.budget && !!data.tid;
+        return true;
+      }
+
+      nextBtn.addEventListener('click', () => {
+        if (current < TOTAL) {
+          if (!stepValid(current)) {
+            nextBtn.classList.add('animate-pulse');
+            setTimeout(() => nextBtn.classList.remove('animate-pulse'), 600);
+            return;
+          }
+          current++;
+          showStep(current);
+        } else {
+          // Final step: validate contact details
+          const name = document.getElementById('wiz-name').value.trim();
+          const email = document.getElementById('wiz-email').value.trim();
+          const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+          if (!name || !emailOk) {
+            errorEl.classList.remove('hidden');
+            return;
+          }
+          errorEl.classList.add('hidden');
+          // Demo submit: show success state
+          steps.forEach((s) => s.classList.add('hidden'));
+          navBar.classList.add('hidden');
+          doneEl.classList.remove('hidden');
+        }
+      });
+
+      backBtn.addEventListener('click', () => {
+        if (current > 1) { current--; showStep(current); }
+      });
+
+      document.getElementById('wiz-restart').addEventListener('click', () => {
+        current = 1;
+        Object.keys(data).forEach((k) => (data[k] = ''));
+        document.querySelectorAll('.wiz-option').forEach((b) => {
+          b.classList.remove('border-oak', 'bg-oak/10', 'ring-1', 'ring-oak');
+          b.classList.add('border-white/10');
+        });
+        ['wiz-name', 'wiz-company', 'wiz-email', 'wiz-phone'].forEach((id) => (document.getElementById(id).value = ''));
+        doneEl.classList.add('hidden');
+        navBar.classList.remove('hidden');
+        showStep(1);
+      });
+
+      showStep(1);
+    })();
   </script>
 </body>
 </html>
